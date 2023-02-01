@@ -338,7 +338,10 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of b3dfa7fa (tile)
 --- !u!1 &1256360450
 GameObject:
   m_ObjectHideFlags: 0
