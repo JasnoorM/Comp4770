@@ -339,6 +339,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of b3dfa7fa (tile)
@@ -730,6 +731,8 @@ Transform:
   m_Father: {fileID: 1781337200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 08ec2208 (walllllssss)
 --- !u!1 &1742959669
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +831,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1781337199
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,3 +868,5 @@ Transform:
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 >>>>>>> parent of b3dfa7fa (tile)
+=======
+>>>>>>> parent of 08ec2208 (walllllssss)
