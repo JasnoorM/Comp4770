@@ -14,7 +14,7 @@ public class CleanerActuator : Actuator
 
         
         //Agent.transform.Translate(tile.transform.position * Time.deltaTime);
-        Agent.transform.position = Vector3.Lerp(transform.position, tile.transform.position, Time.deltaTime);
+        Agent.transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime *5f);
 
         if (Vector3.Distance(Agent.transform.position, tile.transform.position) < 0.1f)
         {
