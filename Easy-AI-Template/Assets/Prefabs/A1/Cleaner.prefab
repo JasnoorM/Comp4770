@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5829531856079109817}
   - component: {fileID: 8691464202373610256}
-  - component: {fileID: 6923470497004425464}
+  - component: {fileID: 3603031858844357623}
   m_Layer: 0
   m_Name: Cleaner
   m_TagString: Untagged
@@ -416,7 +416,7 @@ MonoBehaviour:
   moveSpeed: 10
   moveAcceleration: 10
   lookSpeed: 5
---- !u!114 &6923470497004425464
+--- !u!114 &3603031858844357623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

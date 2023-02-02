@@ -6,13 +6,13 @@ using A1;
 
 public class CleanerActuator : Actuator
 {
-    
+    public float contSpeed = 5f;
 
     public override bool Act(object agentAction)
     {
         if (agentAction == null)
         {
-            Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * 5f);
+            Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * contSpeed);
         }
         else
         {
@@ -20,7 +20,7 @@ public class CleanerActuator : Actuator
 
 
             //Agent.transform.Translate(tile.transform.position * Time.deltaTime);
-            Agent.transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime * 5f);
+            Agent.transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime * contSpeed);
 
             if (Vector3.Distance(Agent.transform.position, tile.transform.position) < 0.1f)
             {

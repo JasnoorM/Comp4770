@@ -12,7 +12,7 @@ namespace A1
               
         public override object Sense()
         {
-            Console.WriteLine("State");
+            
             Floor[] tiles = FindObjectsOfType<Floor>().Where(f => f.IsDirty == true).ToArray();
             return tiles.Length == 0 ? null : tiles.OrderBy(f => Vector3.Distance(f.transform.position, Agent.transform.position)).First();
 
