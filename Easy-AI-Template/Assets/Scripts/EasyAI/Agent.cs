@@ -17,6 +17,8 @@ namespace EasyAI
         /// <summary>
         /// Class to store all targets the agent is moving in relation to.
         /// </summary>
+        /// 
+        public int tileCount = 0;
         public class Movement
         {
             /// <summary>
@@ -24,6 +26,7 @@ namespace EasyAI
             /// </summary>
             public readonly Steering.Behaviour Behaviour;
 
+            
             /// <summary>
             /// The transform to move in relation to.
             /// </summary>

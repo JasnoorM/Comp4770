@@ -19,7 +19,7 @@ namespace A1
             ExtremelyDirty
         }
 
-        public int tileCount = 0;
+        
 
         /// <summary>
         /// The material to display when this floor is clean.

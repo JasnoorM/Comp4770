@@ -12,10 +12,12 @@ namespace A1.States
     {
         DirtSensor sensor;
         CleanerActuator actuator;
+        float timer = 0.0f;
         public override void Execute(Agent agent)
         {
             // TODO - Assignment 1 - Complete the mind of this agent along with any sensors and actuators you need.
-
+            timer += Time.deltaTime;
+            int seconds = (int)timer % 60;
             sensor = agent.gameObject.AddComponent<DirtSensor>();
             actuator = agent.gameObject.AddComponent<CleanerActuator>();
             actuator.Act(sensor.Sense());

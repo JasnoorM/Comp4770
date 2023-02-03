@@ -16,7 +16,7 @@ namespace A1
         {
             timer+= Time.deltaTime;
             seconds = (int)timer % 60;
-            //  Debug.Log(seconds);
+            Debug.Log(seconds);
             
 
             if (Agent.CompareTag("Cleaner1"))
@@ -46,13 +46,12 @@ namespace A1
                 {
                     
                     tile.Clean();
-                    tile.tileCount++;
-                    Debug.Log(tile.tileCount);
+                    Agent.tileCount++;
 
                 }
                 if (seconds == 10)
                 {
-                    Debug.Log("Performance measure: " + tile.tileCount);
+                    Debug.Log("Performance measure: " + Agent.tileCount);
                 }
 
             }
