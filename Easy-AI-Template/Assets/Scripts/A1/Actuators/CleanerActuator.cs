@@ -10,12 +10,16 @@ public class CleanerActuator : Actuator
 
     public override bool Act(object agentAction)
     {
+
+        
         if (agentAction == null)
         {
             Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * 5f);
         }
         else
         {
+
+            int tileCount=0;
             Floor tile = (Floor)agentAction;
 
 
@@ -26,7 +30,7 @@ public class CleanerActuator : Actuator
             {
 
                 tile.Clean();
-
+                tileCount++;
 
 
             }
