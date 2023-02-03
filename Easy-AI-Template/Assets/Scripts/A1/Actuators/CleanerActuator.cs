@@ -9,14 +9,12 @@ namespace A1
     public class CleanerActuator : Actuator
     {
         public float contSpeed;
-        float timer=0f;
-        int seconds;
-        
+        //float timer = 0.0f;
+
         public override bool Act(object agentAction)
         {
-            timer+= Time.deltaTime;
-            seconds = (int)timer % 60;
-            Debug.Log(seconds);
+            Agent.timer += Time.deltaTime;
+            int seconds = (int)Agent.timer % 60;
             
 
             if (Agent.CompareTag("Cleaner1"))
@@ -31,6 +29,7 @@ namespace A1
             if (agentAction == null)
             {
                 Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * contSpeed);
+
             }
             else
             {
@@ -49,13 +48,13 @@ namespace A1
                     Agent.tileCount++;
 
                 }
-                if (seconds == 10)
-                {
-                    Debug.Log("Performance measure: " + Agent.tileCount);
-                }
+            
 
             }
-            
+            if (seconds == 10)
+            {
+                Debug.Log("Performance measure: " + Agent.tileCount);
+            }
 
 
             return true;

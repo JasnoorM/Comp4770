@@ -19,6 +19,7 @@ namespace EasyAI
         /// </summary>
         /// 
         public int tileCount = 0;
+        public float timer = 0;
         public class Movement
         {
             /// <summary>
