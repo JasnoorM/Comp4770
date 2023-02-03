@@ -411,7 +411,7 @@ MonoBehaviour:
   likelyToGetDirtyChance: 0.15
   timeBetweenDirtGeneration: 8
   chanceDirty: 0.05
-  cleanerAgentPrefab: {fileID: 5829531856079109815, guid: cff9a72f1eaaf4243837c2afdd1e5a3e, type: 3}
+  cleanerAgentPrefab: {fileID: 5829531856079109815, guid: 896086695fb7e4a549b8ef98063230dd, type: 3}
   materialCleanNormal: {fileID: 2100000, guid: aa8e8bd4571316249991441dcbaeac6b, type: 2}
   materialCleanLikelyToGetDirty: {fileID: 2100000, guid: 44a0a939e3007bb4c813e5d5ddb6e00c, type: 2}
   materialDirty: {fileID: 2100000, guid: e791b9002174a32479f595195851bbd6, type: 2}

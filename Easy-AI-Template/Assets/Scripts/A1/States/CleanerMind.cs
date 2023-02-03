@@ -10,12 +10,14 @@ namespace A1.States
     [CreateAssetMenu(menuName = "A1/States/Cleaner Mind", fileName = "Cleaner Mind")]
     public class CleanerMind : State
     {
+        DirtSensor sensor;
+        CleanerActuator actuator;
         public override void Execute(Agent agent)
         {
             // TODO - Assignment 1 - Complete the mind of this agent along with any sensors and actuators you need.
 
-            DirtSensor sensor = agent.gameObject.AddComponent<DirtSensor>();
-            CleanerActuator actuator = agent.gameObject.AddComponent<CleanerActuator>();
+            sensor = agent.gameObject.AddComponent<DirtSensor>();
+            actuator = agent.gameObject.AddComponent<CleanerActuator>();
             actuator.Act(sensor.Sense());
         }
     }

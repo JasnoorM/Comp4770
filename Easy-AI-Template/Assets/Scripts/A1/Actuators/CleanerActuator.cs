@@ -4,38 +4,64 @@ using UnityEngine;
 using EasyAI;
 using A1;
 
-public class CleanerActuator : Actuator
+namespace A1
 {
-    public float contSpeed = 5f;
-
-    public override bool Act(object agentAction)
+    public class CleanerActuator : Actuator
     {
-
+        public float contSpeed;
+        float timer=0f;
+        int seconds;
         
-        if (agentAction == null)
+        public override bool Act(object agentAction)
         {
-            Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * contSpeed);
-        }
-        else
-        {
+            timer+= Time.deltaTime;
+            seconds = (int)timer % 60;
+            //  Debug.Log(seconds);
+            
 
-            int tileCount=0;
-            Floor tile = (Floor)agentAction;
+            if (Agent.CompareTag("Cleaner1"))
+            {
+                contSpeed = 5f;
+            }
 
-
-            //Agent.transform.Translate(tile.transform.position * Time.deltaTime);
-            Agent.transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime * contSpeed);
-
-            if (Vector3.Distance(Agent.transform.position, tile.transform.position) < 0.1f)
+            if (Agent.CompareTag("Cleaner2"))
+            {
+                contSpeed = 3f;
+            }
+            if (agentAction == null)
+            {
+                Agent.transform.position = Vector3.MoveTowards(transform.position, new Vector3(0.0f, 0.0f, 0.0f), Time.deltaTime * contSpeed);
+            }
+            else
             {
 
-                tile.Clean();
-                tileCount++;
+                
+                Floor tile = (Floor)agentAction;
 
+
+                //Agent.transform.Translate(tile.transform.position * Time.deltaTime);
+                Agent.transform.position = Vector3.MoveTowards(transform.position, tile.transform.position, Time.deltaTime * contSpeed);
+              
+                if (Vector3.Distance(Agent.transform.position, tile.transform.position) < 0.1f)
+                {
+                    
+                    tile.Clean();
+                    tile.tileCount++;
+                    Debug.Log(tile.tileCount);
+
+                }
+                if (seconds == 10)
+                {
+                    Debug.Log("Performance measure: " + tile.tileCount);
+                }
 
             }
+            
+
+
+            return true;
         }
+
         
-        return true;
     }
 }
