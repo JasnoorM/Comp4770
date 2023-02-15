@@ -1,3 +1,31 @@
 fileFormatVersion: 2
 guid: 4f711a5754144b2f8e383ead329410d1
-timeCreated: 1645559365
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mind: {fileID: 11400000, guid: 1c5677af39d17c748bb3dbf33fc8c7cb, type: 2}
+  - lookupTable: {instanceID: 0}
+  - selectedCamera: {instanceID: 0}
+  - microbePrefab: {instanceID: 0}
+  - spawnParticlesPrefab: {instanceID: 0}
+  - deathParticlesPrefab: {instanceID: 0}
+  - mateParticlesPrefab: {instanceID: 0}
+  - pickupParticlesPrefab: {instanceID: 0}
+  - floorMaterial: {instanceID: 0}
+  - redMicrobeMaterial: {instanceID: 0}
+  - orangeMicrobeMaterial: {instanceID: 0}
+  - yellowMicrobeMaterial: {instanceID: 0}
+  - greenMicrobeMaterial: {instanceID: 0}
+  - blueMicrobeMaterial: {instanceID: 0}
+  - purpleMicrobeMaterial: {instanceID: 0}
+  - pinkMicrobeMaterial: {instanceID: 0}
+  - sleepingIndicatorMaterial: {instanceID: 0}
+  - foodIndicatorMaterial: {instanceID: 0}
+  - mateIndicatorMaterial: {instanceID: 0}
+  - pickupIndicatorMaterial: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

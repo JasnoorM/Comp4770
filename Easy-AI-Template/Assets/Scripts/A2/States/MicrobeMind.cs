@@ -15,7 +15,9 @@ namespace A2.States
         public override void Execute(Agent agent)
         {
             // TODO - Assignment 2 - Complete the mind of the microbes.
-            seek.Enter(agent);
+
+            Debug.Log("Mind");
+            //seek.Enter(agent);
             seek.Execute(agent);
 
             
