@@ -34,8 +34,10 @@ namespace A2.States
             //agent.transform.position = Vector3.MoveTowards(agent.transform.position, pickup.transform.position, Time.deltaTime * 5f);
             Debug.Log("Moveing?");
             //pickup = (MicrobeBasePickup)sensor.Sense();
-            Transform pickup = agent.Sense<A2.Sensors.NearestPickupSensor, Transform>();
-            agent.Move(pickup.position);
+
+            //Microbe microbe = agent as Microbe;
+            //Transform pickup = microbe.Sense<A2.Sensors.NearestPickupSensor, Transform>();
+            //agent.Move(pickup.position);
         }
         
         public override void Exit(Agent agent)

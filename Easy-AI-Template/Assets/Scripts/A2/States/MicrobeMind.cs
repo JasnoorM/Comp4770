@@ -17,6 +17,7 @@ namespace A2.States
             // TODO - Assignment 2 - Complete the mind of the microbes.
 
             //seek = agent.gameObject.AddComponent<MicrobeSeekingPickupState>();
+            
             Debug.Log("Mind");
             //seek.Enter(agent);
             seek.Execute(agent);
