@@ -13,8 +13,8 @@ namespace A2.States
     [CreateAssetMenu(menuName = "A2/States/Microbe Seeking Pickup State", fileName = "Microbe Seeking Pickup State")]
     public class MicrobeSeekingPickupState : State
     {
-        A2.Sensors.NearestPickupSensor sensor;
-        MicrobeBasePickup pickup;
+        //A2.Sensors.NearestPickupSensor sensor;
+        //MicrobeBasePickup pickup;
 
 
 
@@ -32,7 +32,7 @@ namespace A2.States
 
 
             //agent.transform.position = Vector3.MoveTowards(agent.transform.position, pickup.transform.position, Time.deltaTime * 5f);
-            Debug.Log("Moveing?");
+            //Debug.Log("Moveing?");
             //pickup = (MicrobeBasePickup)sensor.Sense();
 
             //Microbe microbe = agent as Microbe;

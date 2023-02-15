@@ -10,7 +10,7 @@ namespace A2.States
     public class MicrobeMind : State
     {
         //A2.Sensors.NearestPickupSensor sensor;
-        MicrobeSeekingPickupState seek;
+        //MicrobeSeekingPickupState seek;
 
         public override void Execute(Agent agent)
         {
@@ -18,9 +18,9 @@ namespace A2.States
 
             //seek = agent.gameObject.AddComponent<MicrobeSeekingPickupState>();
             
-            Debug.Log("Mind");
+            //Debug.Log("Mind");
             //seek.Enter(agent);
-            seek.Execute(agent);
+            //seek.Execute(agent);
 
             
         }
