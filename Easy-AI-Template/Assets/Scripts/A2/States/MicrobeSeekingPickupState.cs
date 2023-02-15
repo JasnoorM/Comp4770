@@ -20,7 +20,9 @@ namespace A2.States
         public override void Enter(Agent agent)
         {
             // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
+            Debug.Log("Moveing?");
             pickup = (MicrobeBasePickup)sensor.Sense();
+           
         }
         
         public override void Execute(Agent agent)
@@ -28,8 +30,8 @@ namespace A2.States
             // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
 
 
-            //pickup.transform.position = Vector3.MoveTowards(transform.position, pickup.transform.position, Time.deltaTime * 5f);
-            agent.Move(pickup.transform.position *Time.deltaTime *1f);
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, pickup.transform.position, Time.deltaTime * 5f);
+            //agent.Move(pickup.transform.position *Time.deltaTime *1f);
         }
         
         public override void Exit(Agent agent)
