@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using A2.States;
 using EasyAI.Navigation;
 using EasyAI.Utility;
 using Unity.Mathematics;
@@ -979,5 +980,7 @@ namespace EasyAI
         {
             Moves = Moves.Where(m => m.Transform == null && m.Position != pos).ToList();
         }
+
+        internal abstract void Execute(MicrobeSeekingPickupState seek);
     }
 }
