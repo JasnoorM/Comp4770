@@ -1,5 +1,7 @@
 ﻿using EasyAI;
 using UnityEngine;
+using A2.Sensors;
+using A2.Pickups;
 
 namespace A2.States
 {
@@ -11,7 +13,25 @@ namespace A2.States
     {
         public override void Execute(Agent agent)
         {
-            // TODO - Assignment 2 - Complete the mind of the microbes.
+            Microbe magent = (Microbe)agent;
+            if (magent.IsHungry)
+            {
+                magent.SetState<MicrobeHungryState>();
+            }
+            else if (magent.IsAdult)
+            {
+                magent.SetState<MicrobeMatingState>();
+            }
+            else if (magent.BeingHunted)
+            {
+                magent.SetState<MicrobeHuntedState>();
+            }
+            else
+            {
+                magent.SetState<MicrobeRoamingState>();
+            }
+
+
         }
     }
 }

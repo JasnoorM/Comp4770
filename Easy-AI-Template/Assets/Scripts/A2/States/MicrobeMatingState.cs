@@ -1,5 +1,6 @@
 ﻿using EasyAI;
 using UnityEngine;
+using A2.Sensors;
 
 namespace A2.States
 {
@@ -9,14 +10,17 @@ namespace A2.States
     [CreateAssetMenu(menuName = "A2/States/Microbe Mating State", fileName = "Microbe Mating State")]
     public class MicrobeMatingState : State
     {
+        
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for mates and reproduce.
+            agent.Log("About to mate");
         }
         
         public override void Execute(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for mates and reproduce.
+
+            
+
         }
         
         public override void Exit(Agent agent)

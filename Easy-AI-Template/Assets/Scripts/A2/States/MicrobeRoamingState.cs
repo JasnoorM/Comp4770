@@ -9,19 +9,25 @@ namespace A2.States
     [CreateAssetMenu(menuName = "A2/States/Microbe Roaming State", fileName = "Microbe Roaming State")]
     public class MicrobeRoamingState : State
     {
+        Microbe agentMicrobe;
+        Vector3 position;
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+            agent.Log("Roaming now");
+            position = new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20));
         }
 
         public override void Execute(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+            
+            agent.Move(position);
+
+            
         }
         
         public override void Exit(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+            
         }
     }
 }

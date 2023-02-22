@@ -11,17 +11,17 @@ namespace A2.States
     {
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
+            agent.Log("Looking for pickups");
         }
         
         public override void Execute(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
+            
         }
         
         public override void Exit(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
+            
         }
     }
 }
