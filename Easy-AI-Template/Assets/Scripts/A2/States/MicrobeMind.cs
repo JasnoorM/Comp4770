@@ -14,7 +14,27 @@ namespace A2.States
 
         public override void Execute(Agent agent)
         {
+<<<<<<< Updated upstream
             // TODO - Assignment 2 - Complete the mind of the microbes.
+=======
+            Microbe magent = (Microbe)agent;
+            if (magent.IsHungry)
+            {
+                magent.SetState<MicrobeHungryState>();
+            }
+            else if (magent.IsAdult)
+            {
+                magent.SetState<MicrobeMatingState>();
+            }
+            else if (magent.BeingHunted)
+            {
+                magent.SetState<MicrobeHuntedState>();
+            }
+            /*else
+            {
+                magent.SetState<MicrobeRoamingState>();
+            }*/
+>>>>>>> Stashed changes
 
             //seek = agent.gameObject.AddComponent<MicrobeSeekingPickupState>();
             
