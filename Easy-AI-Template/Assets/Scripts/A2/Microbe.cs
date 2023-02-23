@@ -155,6 +155,7 @@ namespace A2
         /// <returns>True if mating was complete, false otherwise.</returns>
         private static bool Mate(Microbe a, Microbe b)
         {
+            Debug.Log("Mating");
             if (a._targetMicrobe != b || b._targetMicrobe != a)
             {
                 return false;
@@ -229,6 +230,8 @@ namespace A2
             potentialMate.Log($"Accepted advances of {name}.");
             SetTargetMicrobe(potentialMate);
             potentialMate.SetTargetMicrobe(this);
+
+            Mate(potentialMate, this);
         }
 
         /// <summary>

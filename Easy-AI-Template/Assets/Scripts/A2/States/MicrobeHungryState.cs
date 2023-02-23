@@ -32,7 +32,7 @@ namespace A2.States
                 magent.Eat();
                 magent.SetState<MicrobeRoamingState>();
             }
-
+            
         }
         
         public override void Exit(Agent agent)

@@ -26,6 +26,10 @@ namespace A2.States
             {
                 magent.SetState<MicrobeHuntedState>();
             }
+            else if (!magent.HasPickup)
+            {
+                magent.SetState<MicrobeSeekingPickupState>();
+            }
         }
     }
 }
