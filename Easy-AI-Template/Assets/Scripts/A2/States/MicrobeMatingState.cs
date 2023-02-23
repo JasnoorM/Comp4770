@@ -26,13 +26,16 @@ namespace A2.States
             if (mate != null)
             {
                 magent.AttractMate(mate);
-                magent.Mate();
+                if (magent.DidMate)
+                {
+                    magent.SetState<MicrobeRoamingState>();
+                }
             }
         }
         
         public override void Exit(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for mates and reproduce.
+            agent.Log("Done mating");
         }
     }
 }

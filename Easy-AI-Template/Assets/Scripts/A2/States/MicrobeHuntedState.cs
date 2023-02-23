@@ -19,6 +19,7 @@ namespace A2.States
         {
             // TODO - Assignment 3 - Complete this state. Add the ability for microbes to evade hunters.
             agent.Log("I should be running away but I don't know how to yet!");
+            
         }
         
         public override void Exit(Agent agent)
