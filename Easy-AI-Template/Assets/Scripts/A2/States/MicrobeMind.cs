@@ -12,7 +12,12 @@ namespace A2.States
 
         public override void Execute(Agent agent)
         {
+
             Microbe magent = (Microbe)agent;
+
+            magent.SetState<MicrobeRoamingState>();
+
+
             if (magent.IsHungry)
             {
                 magent.SetState<MicrobeHungryState>();
@@ -29,10 +34,6 @@ namespace A2.States
             {
                 magent.SetState<MicrobeSeekingPickupState>();
             }
-            else
-            magent.SetState<MicrobeRoamingState>();
-            
-             
         }
     }
 }
