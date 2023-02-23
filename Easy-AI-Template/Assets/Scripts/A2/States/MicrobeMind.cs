@@ -30,6 +30,11 @@ namespace A2.States
             {
                 magent.SetState<MicrobeSeekingPickupState>();
             }
+            
+            else {
+                magent.SetState<MicrobeRoamingState>();
+            }
+             
         }
     }
 }
