@@ -981,6 +981,6 @@ namespace EasyAI
             Moves = Moves.Where(m => m.Transform == null && m.Position != pos).ToList();
         }
 
-        internal abstract void Execute(MicrobeSeekingPickupState seek);
+        
     }
 }

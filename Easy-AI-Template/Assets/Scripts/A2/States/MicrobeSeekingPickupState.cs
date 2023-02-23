@@ -20,10 +20,7 @@ namespace A2.States
 
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for pickups.
-            //Debug.Log("Moveing?");
-            //pickup = (MicrobeBasePickup)sensor.Sense();
-           
+            agent.Log("Looking for a pickup");
         }
         
         public override void Execute(Agent agent)

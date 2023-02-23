@@ -1,5 +1,6 @@
 ﻿using EasyAI;
 using UnityEngine;
+using A2.Sensors;
 
 namespace A2.States
 {
@@ -9,19 +10,30 @@ namespace A2.States
     [CreateAssetMenu(menuName = "A2/States/Microbe Hungry State", fileName = "Microbe Hungry State")]
     public class MicrobeHungryState : State
     {
+
+        Microbe magent;
+        NearestPreySensor NearPrey;
+        Microbe prey;
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes search for other microbes to eat.
+            agent.Log("Looking for food");
+            magent = (Microbe)agent;
+            NearPrey = agent.GetComponent<NearestPreySensor>();
+            prey = (Microbe)NearPrey.Sense();
+            magent.StartHunting(prey);
         }
         
         public override void Execute(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes search for other microbes to eat.
+            
+            magent.Move(prey.transform.position);
+            magent.Eat();
+            
         }
         
         public override void Exit(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes search for other microbes to eat.
+            
         }
     }
 }

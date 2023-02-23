@@ -11,7 +11,7 @@ namespace A2.States
     {
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes look for mates and reproduce.
+            agent.Log("Looking to mate");
         }
         
         public override void Execute(Agent agent)
