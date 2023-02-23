@@ -23,7 +23,7 @@ namespace A2.States
         
         public override void Execute(Agent agent)
         {
-            if (mate != null)
+            if (mate != null && magent !=null)
             {
                 magent.AttractMate(mate);
                 if (magent.DidMate)

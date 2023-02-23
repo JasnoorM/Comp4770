@@ -26,7 +26,7 @@ namespace A2.States
         
         public override void Execute(Agent agent)
         {
-            if (prey != null)
+            if (prey != null && magent != null)
             {
                 magent.Move(prey.transform.position);
                 magent.Eat();

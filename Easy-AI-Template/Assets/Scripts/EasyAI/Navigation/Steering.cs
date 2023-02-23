@@ -117,7 +117,7 @@ namespace EasyAI.Navigation
         /// <returns>The velocity to apply to the agent to perform the flee.</returns>
         private static Vector2 Flee(Vector2 position, Vector2 velocity, Vector2 pursuer, float speed)
         {
-            return (pursuer + position).normalized * speed - velocity;
+            return -(pursuer - position).normalized * speed - velocity;
         }
 
         /// <summary>
