@@ -20,20 +20,24 @@ namespace A2.States
             magent = (Microbe)agent;
             NearPrey = agent.GetComponent<NearestPreySensor>();
             prey = (Microbe)NearPrey.Sense();
-            magent.StartHunting(prey);
+            if(prey != null) magent.StartHunting(prey);
+            
         }
         
         public override void Execute(Agent agent)
         {
-            
-            magent.Move(prey.transform.position);
-            magent.Eat();
-            
+            if (prey != null)
+            {
+                magent.Move(prey.transform.position);
+                magent.Eat();
+                magent.SetState<MicrobeRoamingState>();
+            }
+
         }
         
         public override void Exit(Agent agent)
         {
-            
+            agent.Log("Done eating");
         }
     }
 }
