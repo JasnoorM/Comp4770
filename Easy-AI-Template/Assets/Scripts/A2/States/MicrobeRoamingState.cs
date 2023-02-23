@@ -18,17 +18,18 @@ namespace A2.States
             // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
             magent = (Microbe)agent;
             agent.Log("Roaming");
+
+            x = Random.Range(0, 20);
+            y = Random.Range(0, 20); ;
+            z = Random.Range(0, 20);
         }
 
         public override void Execute(Agent agent)
         {
-            x = Random.Range(0,20);
-            y = 0;
-            z = Random.Range(0,20);
+            
             pos = new Vector3(x,y,z);
             magent.Move(pos);
 
-            
 
         }
 
