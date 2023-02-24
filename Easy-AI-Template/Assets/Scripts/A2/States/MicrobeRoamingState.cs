@@ -16,20 +16,35 @@ namespace A2.States
         public override void Enter(Agent agent)
         {
             // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+
             magent = (Microbe)agent;
             agent.Log("Roaming");
 
-            /*x = Random.Range(0, 20);
-            y = Random.Range(0, 20); ;
-            z = Random.Range(0, 20);*/
+            x = Random.Range(0, 20);
+            y = Random.Range(0, 20);
+            z = Random.Range(0, 20);
+
+
+            //pos = Random.insideUnitCircle * 30;
+
         }
 
         public override void Execute(Agent agent)
         {
 
-            //pos = new Vector3(x,y,z);
-            pos = Random.insideUnitCircle * 30;
+
+            
+
+            pos = new Vector3(x, y, z);
             magent.Move(pos);
+
+            if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+            {
+                pos = new Vector3(x, y, z);
+                magent.Move(pos);
+            }
+
+
 
 
         }

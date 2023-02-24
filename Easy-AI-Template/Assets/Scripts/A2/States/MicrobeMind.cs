@@ -10,12 +10,15 @@ namespace A2.States
     public class MicrobeMind : State
     {
 
+
+
         public override void Execute(Agent agent)
         {
 
             Microbe magent = (Microbe)agent;
 
-            magent.SetState<MicrobeRoamingState>();
+
+            
 
 
             if (magent.IsHungry)
@@ -33,6 +36,10 @@ namespace A2.States
             else if (!magent.HasPickup)
             {
                 magent.SetState<MicrobeSeekingPickupState>();
+            }
+            else
+            {
+                magent.SetState<MicrobeRoamingState>();
             }
         }
     }
