@@ -27,9 +27,9 @@ namespace A2.States
         public override void Execute(Agent agent)
         {
 
-            //pos = new Vector3(x,y,z);
+           /* //pos = new Vector3(x,y,z);
             pos = Random.insideUnitCircle * 30;
-            magent.Move(pos);
+            magent.Move(pos);*/
 
 
         }
