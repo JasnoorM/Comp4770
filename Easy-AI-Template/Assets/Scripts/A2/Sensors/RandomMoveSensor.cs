@@ -17,8 +17,8 @@ namespace A2.Sensors
         public override object Sense()
         {
 
-            x = Random.Range(0, 20);
-            z = Random.Range(0, 20);
+            x = Random.Range(-20, 20);
+            z = Random.Range(-20, 20);
 
             Vector3 pos = new Vector3(x, 0, z);
 

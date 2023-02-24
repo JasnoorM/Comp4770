@@ -149,7 +149,7 @@ namespace EasyAI.Navigation
         private static Vector2 Evade(Vector2 position, Vector2 velocity, Vector2 pursuer, Vector2 pursuerLastPosition, float speed, float deltaTime)
         {
             // TODO - Assignment 3 - Complete the remaining steering behaviours and use them to improve the microbes level.
-            return ((position - pursuer) + pursuerLastPosition).normalized * speed - velocity; ;
+            return ((position - pursuer) - pursuerLastPosition).normalized * speed - velocity; ;
         }
     }
 }

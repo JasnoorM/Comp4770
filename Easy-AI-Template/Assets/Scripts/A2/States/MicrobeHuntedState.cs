@@ -20,19 +20,19 @@ namespace A2.States
 
         public override void Execute(Agent agent)
         {
-            if (magent != null && magent.Hunter != null)
+            if (magent != null && magent.Hunter != null && Vector3.Distance(magent.transform.position, magent.Hunter.transform.position)<magent.DetectionRange)
             {
                 magent.Move(magent.Hunter.transform.position, Steering.Behaviour.Evade);
+                Exit(magent);
             }
             if (magent.Hunter == null)
             {
-                magent.StopMoving();
+                Exit(magent);
             }
         }
         
         public override void Exit(Agent agent)
         {
-            // TODO - Assignment 3 - Complete this state. Add the ability for microbes to evade hunters.
             agent.Log("No longer being hunted.");
         }
     }

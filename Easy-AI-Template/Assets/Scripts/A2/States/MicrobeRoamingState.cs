@@ -11,60 +11,44 @@ namespace A2.States
     {
         Microbe magent;
         float x, y, z;
-        A2.Sensors.RandomMoveSensor pos;
 
         public override void Enter(Agent agent)
         {
            
 
             magent = (Microbe)agent;
-            agent.Log("Roaming");
-
-            pos = magent.GetComponent<A2.Sensors.RandomMoveSensor>();
-
+            agent.Log("Roaming");            
 
         }
 
         public override void Execute(Agent agent)
         {
+            /*if (magent != null)
 
-
-            if (magent != null)
-            {
-                magent.Move(pos);
-            }
-
-
-
-
-
-
-        /*if (magent != null)
-
-        {
-            x = Random.Range(0, 20);
-            //y = Random.Range(0, 1);
-            z = Random.Range(0, 20);
-
-            Vector3 pos = new Vector3(x, 0, z);
-            magent.Move(pos);
-
-
-
-
-            if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
             {
                 x = Random.Range(0, 20);
                 //y = Random.Range(0, 1);
                 z = Random.Range(0, 20);
-                pos = new Vector3(x, 0, z);
+
+                Vector3 pos = new Vector3(x, 0, z);
                 magent.Move(pos);
+
+
+
+
+                if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+                {
+                    x = Random.Range(0, 20);
+                    //y = Random.Range(0, 1);
+                    z = Random.Range(0, 20);
+                    pos = new Vector3(x, 0, z);
+                    magent.Move(pos);
+                }
+
+
             }
-
-
-        }*/
-
-    }
+*/
+        }
 
         public override void Exit(Agent agent)
         {

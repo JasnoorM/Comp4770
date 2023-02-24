@@ -25,18 +25,18 @@ namespace A2.States
             {
                 magent.SetState<MicrobeHungryState>();
             }
-            else if (magent.IsAdult)
+            /*else if (magent.IsAdult)
             {
                 magent.SetState<MicrobeMatingState>();
-            }
+            }*/
             else if (magent.BeingHunted)
             {
                 magent.SetState<MicrobeHuntedState>();
             }
-            else if (!magent.HasPickup)
+            /*else if (!magent.HasPickup)
             {
                 magent.SetState<MicrobeSeekingPickupState>();
-            }
+            }*/
             /*else if (magent.HasPickup || magent.DidMate || !magent.IsHungry)
             {
                 magent.SetState<MicrobeRoamingState>();
