@@ -12,6 +12,12 @@ namespace A2.States
         Microbe magent;
         float x, y, z;
 
+        Vector3 wanderTarget;
+        Vector3 pos;
+
+        float radius = 20, distance = 5, jitter = 2;
+
+
         public override void Enter(Agent agent)
         {
            
@@ -23,6 +29,23 @@ namespace A2.States
 
         public override void Execute(Agent agent)
         {
+
+            wanderTarget = new Vector3(Random.value * jitter, 0, Random.value * jitter);
+            wanderTarget.Normalize();
+            wanderTarget *= radius;
+            wanderTarget.x += distance;
+            wanderTarget.z += distance;
+
+            if (magent != null)
+            {
+                //pos = (magent.transform.TransformPoint(wanderTarget) - magent.transform.position);
+                magent.Move(wanderTarget);
+
+                
+            }
+
+            
+
             /*if (magent != null)
 
             {
@@ -46,8 +69,8 @@ namespace A2.States
                 }
 
 
-            }
-*/
+            }*/
+
         }
 
         public override void Exit(Agent agent)
