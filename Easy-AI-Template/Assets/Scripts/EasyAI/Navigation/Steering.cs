@@ -117,6 +117,7 @@ namespace EasyAI.Navigation
         /// <returns>The velocity to apply to the agent to perform the flee.</returns>
         private static Vector2 Flee(Vector2 position, Vector2 velocity, Vector2 pursuer, float speed)
         {
+            
             return -(pursuer - position).normalized * speed - velocity;
         }
 
@@ -132,8 +133,7 @@ namespace EasyAI.Navigation
         /// <returns>The velocity to apply to the agent to perform the pursuit.</returns>
         private static Vector2 Pursue(Vector2 position, Vector2 velocity, Vector2 evader, Vector2 evaderLastPosition, float speed, float deltaTime)
         {
-            
-            return Vector2.zero;
+            return (evader - position- evaderLastPosition).normalized * speed - velocity; 
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace EasyAI.Navigation
         private static Vector2 Evade(Vector2 position, Vector2 velocity, Vector2 pursuer, Vector2 pursuerLastPosition, float speed, float deltaTime)
         {
             // TODO - Assignment 3 - Complete the remaining steering behaviours and use them to improve the microbes level.
-            return Vector2.zero;
+            return ((position - pursuer) + pursuerLastPosition).normalized * speed - velocity; ;
         }
     }
 }
