@@ -2,6 +2,7 @@
 using A2.Sensors;
 using EasyAI;
 using UnityEngine;
+using EasyAI.Navigation;
 
 
 namespace A2.States
@@ -29,8 +30,7 @@ namespace A2.States
             if (pickup != null)
             {
                 magent.SetPickup(pickup);
-                magent.Move(pickup.transform.position);
-                magent.SetState<MicrobeRoamingState>();
+                magent.Move(pickup.transform.position, Steering.Behaviour.Seek);
             }               
             else magent.SetState<MicrobeRoamingState>();
         }

@@ -1,6 +1,7 @@
 ﻿using EasyAI;
 using UnityEngine;
 using A2.Sensors;
+using EasyAI.Navigation;
 
 namespace A2.States
 {

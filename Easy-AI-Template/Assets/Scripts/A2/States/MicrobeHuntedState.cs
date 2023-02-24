@@ -23,13 +23,10 @@ namespace A2.States
             if (magent != null && magent.Hunter != null)
             {
                 magent.Move(magent.Hunter.transform.position, Steering.Behaviour.Evade);
-                magent.SetState<MicrobeRoamingState>();
-
             }
             if (magent.Hunter == null)
             {
                 magent.StopMoving();
-                magent.SetState<MicrobeRoamingState>();
             }
         }
         

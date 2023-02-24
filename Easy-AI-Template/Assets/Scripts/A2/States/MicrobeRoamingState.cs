@@ -22,7 +22,7 @@ namespace A2.States
 
                 x = Random.Range(0, 20);
                 y = Random.Range(0, 20);
-                z = Random.Range(0, 20);
+                z = Random.Range(0, 20); 
 
         }
 
