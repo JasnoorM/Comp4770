@@ -18,7 +18,7 @@ namespace A2.States
             Microbe magent = (Microbe)agent;
 
 
-
+            magent.SetState<MicrobeRoamingState>();
 
 
             if (magent.IsHungry)
@@ -36,6 +36,10 @@ namespace A2.States
             else if (!magent.HasPickup)
             {
                 magent.SetState<MicrobeSeekingPickupState>();
+            }
+            else if (magent.HasPickup || magent.DidMate || !magent.IsHungry)
+            {
+                magent.SetState<MicrobeRoamingState>();
             }
             else
             {

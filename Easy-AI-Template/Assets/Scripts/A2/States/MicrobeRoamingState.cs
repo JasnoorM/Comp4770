@@ -11,49 +11,62 @@ namespace A2.States
     {
         Microbe magent;
         float x, y, z;
-        Vector3 pos;
+        //Vector3 pos;
 
         public override void Enter(Agent agent)
         {
             // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
-            
-                magent = (Microbe)agent;
-                agent.Log("Roaming");
 
-                x = Random.Range(0, 20);
-                y = Random.Range(0, 20);
-                z = Random.Range(0, 20);
+            magent = (Microbe)agent;
+            agent.Log("Roaming");
+
+
+
 
         }
 
         public override void Execute(Agent agent)
         {
+            
+        
 
-            if (magent != null)
+        if (magent != null)
 
+        {
+            x = Random.Range(0, 20);
+            //y = Random.Range(0, 1);
+            z = Random.Range(0, 20);
+
+            Vector3 pos = new Vector3(x, 0, z);
+            magent.Move(pos);
+
+
+
+
+            if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
             {
-
-                pos = new Vector3(x, y, z);
+                x = Random.Range(0, 20);
+                //y = Random.Range(0, 1);
+                z = Random.Range(0, 20);
+                pos = new Vector3(x, 0, z);
                 magent.Move(pos);
-
-
-                if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
-                {
-                    x = Random.Range(0, 20);
-                    y = Random.Range(0, 20);
-                    z = Random.Range(0, 20);
-                    pos = new Vector3(x, y, z);
-                    magent.Move(pos);
-                }
-
-
             }
 
+
         }
+
+    }
 
         public override void Exit(Agent agent)
         {
             // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+
+            
+
         }
+
+
+
+
     }
 }
