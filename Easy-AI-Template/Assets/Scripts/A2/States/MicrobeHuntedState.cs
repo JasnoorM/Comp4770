@@ -26,7 +26,7 @@ namespace A2.States
                 magent.SetState<MicrobeRoamingState>();
 
             }
-            if (magent.BeingHunted == false)
+            if (magent.Hunter == null)
             {
                 magent.StopMoving();
                 magent.SetState<MicrobeRoamingState>();

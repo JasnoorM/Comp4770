@@ -32,26 +32,20 @@ namespace A2.States
         public override void Execute(Agent agent)
         {
 
-<<<<<<< HEAD
-
-            
-
-            pos = new Vector3(x, y, z);
-            magent.Move(pos);
-=======
-           /* //pos = new Vector3(x,y,z);
-            pos = Random.insideUnitCircle * 30;
-            magent.Move(pos);*/
->>>>>>> 161ca89769d6628e010c799deb0ab498949d4d05
-
-            if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+            if (magent != null)
             {
                 pos = new Vector3(x, y, z);
                 magent.Move(pos);
+
+
+                if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+                {
+                    pos = new Vector3(x, y, z);
+                    magent.Move(pos);
+                }
+
+
             }
-
-
-
 
         }
 
