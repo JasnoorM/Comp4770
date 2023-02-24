@@ -17,12 +17,7 @@ namespace A2.States
 
             Microbe magent = (Microbe)agent;
 
-<<<<<<< HEAD
 
-            
-=======
-           // magent.SetState<MicrobeRoamingState>();
->>>>>>> 161ca89769d6628e010c799deb0ab498949d4d05
 
 
             if (magent.IsHungry)
