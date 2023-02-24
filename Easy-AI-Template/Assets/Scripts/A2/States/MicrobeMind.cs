@@ -1,4 +1,4 @@
-﻿using EasyAI;
+using EasyAI;
 using UnityEngine;
 
 namespace A2.States
@@ -16,6 +16,7 @@ namespace A2.States
         {
 
             Microbe magent = (Microbe)agent;
+
 
 
 

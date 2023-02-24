@@ -1,4 +1,4 @@
-﻿using EasyAI;
+using EasyAI;
 using UnityEngine;
 
 namespace A2.States
@@ -32,8 +32,6 @@ namespace A2.States
         public override void Execute(Agent agent)
         {
 
-
-
             
 
             pos = new Vector3(x, y, z);
@@ -41,13 +39,22 @@ namespace A2.States
 
 
             if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+
+            if (magent != null)
+
             {
                 pos = new Vector3(x, y, z);
                 magent.Move(pos);
+
+
+                if (Vector3.Distance(magent.transform.position, pos) < 0.1f)
+                {
+                    pos = new Vector3(x, y, z);
+                    magent.Move(pos);
+                }
+
+
             }
-
-
-
 
         }
 

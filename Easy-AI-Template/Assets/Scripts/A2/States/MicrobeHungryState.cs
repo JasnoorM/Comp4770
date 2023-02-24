@@ -29,13 +29,12 @@ namespace A2.States
         {
             if (prey != null && magent != null)
             {
-                if (prey.LifeSpan < magent.LifeSpan)
-                {
+                
                     magent.Move(prey.transform.position, Steering.Behaviour.Pursue);
                     magent.Eat();
                     magent.SetState<MicrobeRoamingState>();
-                }
-                else agent.Log("Too big to eat");
+                
+                
             }
             
         }
