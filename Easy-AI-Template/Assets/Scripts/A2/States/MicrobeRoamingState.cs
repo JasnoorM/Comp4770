@@ -11,26 +11,35 @@ namespace A2.States
     {
         Microbe magent;
         float x, y, z;
-        //Vector3 pos;
+        A2.Sensors.RandomMoveSensor pos;
 
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 2 - Complete this state. Have microbes randomly roam around.
+           
 
             magent = (Microbe)agent;
             agent.Log("Roaming");
 
-
+            pos = magent.GetComponent<A2.Sensors.RandomMoveSensor>();
 
 
         }
 
         public override void Execute(Agent agent)
         {
-            
-        
 
-        if (magent != null)
+
+            if (magent != null)
+            {
+                magent.Move(pos);
+            }
+
+
+
+
+
+
+        /*if (magent != null)
 
         {
             x = Random.Range(0, 20);
@@ -53,7 +62,7 @@ namespace A2.States
             }
 
 
-        }
+        }*/
 
     }
 
