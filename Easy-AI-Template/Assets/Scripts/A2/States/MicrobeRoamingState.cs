@@ -15,33 +15,39 @@ namespace A2.States
         Vector3 wanderTarget;
         Vector3 pos;
 
-        float radius = 20, distance = 5, jitter = 2;
+        float radius, distance , jitter;
 
 
         public override void Enter(Agent agent)
         {
-           
 
+            distance = Random.Range(-10, 10);
+            radius = Random.Range(1, 20);
+            jitter = Random.Range(0, 5);
             magent = (Microbe)agent;
-            agent.Log("Roaming");            
-
+            agent.Log("Roaming");
+            wanderTarget = new Vector3(Random.value * jitter, Random.value * jitter, Random.value * jitter);
         }
 
         public override void Execute(Agent agent)
         {
 
-            wanderTarget = new Vector3(Random.value * jitter, 0, Random.value * jitter);
+            
+            
             wanderTarget.Normalize();
             wanderTarget *= radius;
             wanderTarget.x += distance;
+            wanderTarget.y += distance;
             wanderTarget.z += distance;
 
             if (magent != null)
             {
-                //pos = (magent.transform.TransformPoint(wanderTarget) - magent.transform.position);
+                
                 magent.Move(wanderTarget);
 
+                if (!magent.Moving) magent.SetState<MicrobeMind>();
                 
+
             }
 
             

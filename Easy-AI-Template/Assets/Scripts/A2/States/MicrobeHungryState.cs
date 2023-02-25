@@ -32,7 +32,7 @@ namespace A2.States
                 
                     magent.Move(prey.transform.position, Steering.Behaviour.Pursue);
                     magent.Eat();
-                    Exit(magent);
+                    if(!magent.IsHungry)magent.SetState<MicrobeRoamingState>();
             }
             
         }

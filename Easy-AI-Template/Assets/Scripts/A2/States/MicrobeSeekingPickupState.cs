@@ -31,8 +31,9 @@ namespace A2.States
             {
                 magent.SetPickup(pickup);
                 magent.Move(pickup.transform.position, Steering.Behaviour.Seek);
+                if(magent.HasPickup)magent.SetState<MicrobeRoamingState>();
             }               
-            else magent.SetState<MicrobeRoamingState>();
+            
         }
         
         public override void Exit(Agent agent)
