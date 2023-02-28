@@ -27,6 +27,7 @@ namespace A2.States
             if (mate != null && magent !=null)
             {
                 magent.AttractMate(mate);
+                if(magent.HasTarget)magent.Mate();
                 if (magent.DidMate)
                 {
                     magent.SetState<MicrobeRoamingState>();
