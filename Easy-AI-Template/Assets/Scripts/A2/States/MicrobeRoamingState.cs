@@ -26,7 +26,7 @@ namespace A2.States
             jitter = Random.Range(0, 5);
             magent = (Microbe)agent;
             agent.Log("Roaming");
-            wanderTarget = new Vector3(Random.value * jitter, Random.value * jitter, Random.value * jitter);
+            wanderTarget = new Vector3(Random.value, Random.value, Random.value);
         }
 
         public override void Execute(Agent agent)
