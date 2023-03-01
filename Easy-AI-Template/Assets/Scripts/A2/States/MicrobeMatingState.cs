@@ -19,16 +19,21 @@ namespace A2.States
             agent.Log("Looking to mate");
             magent = (Microbe)agent;
             NearMate = agent.GetComponent<NearestMateSensor>();
-            mate = (Microbe)NearMate.Sense();
+            mate = (Microbe)NearMate.Sense(); //sense microbe to mate with
         }
         
         public override void Execute(Agent agent)
         {
+            //when microbe and the mate are not dead and microbe has not already mated
             if (mate != null && magent !=null && !magent.DidMate)
             {
+                //microbe goes to the attracted mate
                 magent.AttractMate(mate);
+
+                //when microbe has mated
                 if (magent.DidMate)
                 {
+                    //go back to roaming
                     magent.SetState<MicrobeRoamingState>();
                 }
             }

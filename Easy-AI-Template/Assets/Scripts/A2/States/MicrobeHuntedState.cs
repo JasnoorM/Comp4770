@@ -13,23 +13,26 @@ namespace A2.States
         Microbe magent;
         public override void Enter(Agent agent)
         {
-            // TODO - Assignment 3 - Complete this state. Add the ability for microbes to evade hunters.
+            
             agent.Log("I'm being hunted!");
             magent = (Microbe)agent;
         }
 
         public override void Execute(Agent agent)
         {
+
+            // when microbes being hunted and the hunter microbe are not dead, and the microve detects the hunter microbe
             if (magent != null && magent.Hunter != null && Vector3.Distance(magent.transform.position, magent.Hunter.transform.position)< magent.DetectionRange)
             {
+                //microbe move away 'evade' from the hunter
                 magent.Move(magent.Hunter.transform.position, Steering.Behaviour.Evade);
                 
 
             }
-            if (!magent.BeingHunted)
+            if (!magent.BeingHunted) //if mirobe no longer being hunted
             {
-                magent.StopMoving();
-                magent.SetState<MicrobeRoamingState>();
+                magent.StopMoving(); //stop moving
+                magent.SetState<MicrobeRoamingState>(); //go back to roaming
             }
         }
         
