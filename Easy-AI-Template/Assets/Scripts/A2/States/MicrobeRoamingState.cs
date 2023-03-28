@@ -26,7 +26,9 @@ namespace A2.States
             jitter = Random.Range(0, 5);
             magent = (Microbe)agent;
             agent.Log("Roaming");
-            wanderTarget = new Vector3(Random.value, Random.value, Random.value);
+            
+            wanderTarget = new Vector2(Random.value, Random.value);
+            magent.Move(wanderTarget);
         }
 
         public override void Execute(Agent agent)
@@ -34,18 +36,22 @@ namespace A2.States
 
             
             
-            wanderTarget.Normalize();
+            /*wanderTarget.Normalize();
             wanderTarget *= radius;
             wanderTarget.x += distance;
             wanderTarget.y += distance;
-            wanderTarget.z += distance;
+            wanderTarget.z += distance;*/
 
             if (magent != null)
             {
-                
-                magent.Move(wanderTarget);
 
-                if (!magent.Moving) magent.SetState<MicrobeMind>();
+
+
+                if (!magent.Moving || Vector2.Distance(magent.transform.position, wanderTarget) >= 0.2f)
+                {
+                    wanderTarget = MicrobeManager.RandomPosition;
+                    magent.Move(wanderTarget);
+                }
                 
 
             }

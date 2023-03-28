@@ -35,7 +35,7 @@ namespace A2.States
                     magent.SetState<MicrobeRoamingState>();
 
             }
-            if (!magent.IsHungry) magent.SetState<MicrobeRoamingState>();
+//            if (!magent.IsHungry) magent.SetState<MicrobeRoamingState>();
         }
         
         public override void Exit(Agent agent)
