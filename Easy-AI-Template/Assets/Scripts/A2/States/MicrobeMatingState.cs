@@ -1,4 +1,4 @@
-﻿using EasyAI;
+using EasyAI;
 using UnityEngine;
 using A2.Sensors;
 using EasyAI.Navigation;
@@ -30,7 +30,6 @@ namespace A2.States
                 //microbe goes to the attracted mate
                 magent.AttractMate(mate);
 
-                //when microbe has mated
                 if (magent.DidMate)
                 {
                     //go back to roaming
