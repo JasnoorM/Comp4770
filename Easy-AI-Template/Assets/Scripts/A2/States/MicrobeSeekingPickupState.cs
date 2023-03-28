@@ -19,19 +19,21 @@ namespace A2.States
 
         public override void Enter(Agent agent)
         {
+
             magent = (Microbe)agent;
             agent.Log("Looking for a pickup");
-            NearPickup = magent.GetComponent<NearestPickupSensor>();
-            pickup = (MicrobeBasePickup)NearPickup.Sense();
+            NearPickup = magent.GetComponent<NearestPickupSensor>(); 
+            pickup = (MicrobeBasePickup)NearPickup.Sense(); //sense the nearest pickup
         }
         
         public override void Execute(Agent agent)
         {
-            if (pickup != null)
+            if (pickup != null) //if the pickup still exists
             {
-                magent.SetPickup(pickup);
-                magent.Move(pickup.transform.position, Steering.Behaviour.Seek);
-                if(magent.HasPickup)magent.SetState<MicrobeRoamingState>();
+                
+                magent.SetPickup(pickup); //sets the target to the pickup
+                magent.Move(pickup.transform.position, Steering.Behaviour.Seek); //move towards the pickup
+                if(magent.HasPickup)magent.SetState<MicrobeRoamingState>(); //go to roaming state when pickup is taken
             }               
             
         }

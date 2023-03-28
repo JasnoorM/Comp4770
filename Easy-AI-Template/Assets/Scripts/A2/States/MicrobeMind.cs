@@ -17,26 +17,30 @@ namespace A2.States
 
             Microbe magent = (Microbe)agent;
 
-            /*if (magent.IsHungry)
+
+            
+
+
+            if (magent.IsHungry) //when microbe is hungry
             {
-                magent.SetState<MicrobeHungryState>();
+                magent.SetState<MicrobeHungryState>(); //go to hungry state
             }
-            else if (magent.IsAdult)
+            else if (magent.IsAdult) //when microbe is an adult
             {
-                magent.SetState<MicrobeMatingState>();
+                magent.SetState<MicrobeMatingState>(); // go to mating state
             }
-            else if (magent.BeingHunted)
+            else if (magent.BeingHunted) //when microbe is being hunted
             {
-                magent.SetState<MicrobeHuntedState>();
+                magent.SetState<MicrobeHuntedState>(); //go to hunted state
             }
-            else if (!magent.HasPickup)
+            else if (!magent.HasPickup) //when microbe has not picked up a pickup
             {
-                magent.SetState<MicrobeSeekingPickupState>();
+                magent.SetState<MicrobeSeekingPickupState>(); //go to pickup state
             }
-            else if(!magent.IsHungry && magent.HasPickup && magent.DidMate && !magent.BeingHunted)
-            {*/
-                magent.SetState<MicrobeRoamingState>();
-           // }
+            else
+            {
+                magent.SetState<MicrobeRoamingState>(); //go to roaming state
+            }
             
         }
     }

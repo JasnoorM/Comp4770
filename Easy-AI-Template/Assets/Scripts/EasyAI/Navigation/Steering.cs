@@ -133,13 +133,13 @@ namespace EasyAI.Navigation
         /// <returns>The velocity to apply to the agent to perform the pursuit.</returns>
         private static Vector2 Pursue(Vector2 position, Vector2 velocity, Vector2 evader, Vector2 evaderLastPosition, float speed, float deltaTime)
         {
-            float evader_speed = Vector2.Distance(evader, evaderLastPosition) / deltaTime;
+            float evader_speed = Vector2.Distance(evader, evaderLastPosition) / deltaTime; //gets speed of the evader
 
-            float lookahead = Vector2.Distance(position, evader) / (speed + evader_speed);
+            float lookahead = Vector2.Distance(position, evader) / (speed + evader_speed); //find the look-ahead time
             velocity *= lookahead;
 
-            Vector2 predicted_pos = evader + (velocity);
-            return Seek(position, velocity, predicted_pos, speed);
+            Vector2 predicted_pos = evader + (velocity); //current position of the evader pluss the velocity to predict the position
+            return Seek(position, velocity, predicted_pos, speed); //seek to the predicted position of the evader
         }
 
         /// <summary>
@@ -154,13 +154,13 @@ namespace EasyAI.Navigation
         /// <returns>The velocity to apply to the agent to perform the evade.</returns>
         private static Vector2 Evade(Vector2 position, Vector2 velocity, Vector2 pursuer, Vector2 pursuerLastPosition, float speed, float deltaTime)
         {
-            float evader_speed = Vector2.Distance(pursuer, pursuerLastPosition) / deltaTime;
+            float evader_speed = Vector2.Distance(pursuer, pursuerLastPosition) / deltaTime;  //gets speed of the pursuer
 
-            float lookahead = Vector2.Distance(position, pursuer) / (speed + evader_speed);
+            float lookahead = Vector2.Distance(position, pursuer) / (speed + evader_speed); //find the look-ahead time
             velocity *= lookahead;
 
-            Vector2 predicted_pos = pursuer + (velocity);
-            return Flee(position, velocity, predicted_pos, speed);
+            Vector2 predicted_pos = pursuer + (velocity); //predict the position
+            return Flee(position, velocity, predicted_pos, speed); //run away
         }
     }
 }
