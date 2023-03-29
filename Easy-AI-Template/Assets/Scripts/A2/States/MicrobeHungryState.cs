@@ -36,7 +36,7 @@ namespace A2.States
                     magent.SetState<MicrobeRoamingState>(); //go back to roaming state after eating
 
             }
-            if (!magent.IsHungry) magent.SetState<MicrobeRoamingState>(); //go to roaming state if microbe is not hungry
+//            if (!magent.IsHungry) magent.SetState<MicrobeRoamingState>();
         }
         
         public override void Exit(Agent agent)
