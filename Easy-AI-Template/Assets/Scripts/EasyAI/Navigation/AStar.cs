@@ -23,6 +23,9 @@ namespace EasyAI.Navigation
             //assign lookup table to manager
             //Navigate
 
+
+
+
             // TODO - Assignment 4 - Implement A* pathfinding.
             return new();
         }

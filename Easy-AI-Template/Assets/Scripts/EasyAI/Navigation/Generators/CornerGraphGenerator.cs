@@ -17,6 +17,21 @@ namespace EasyAI.Navigation.Generators
         /// </summary>
         public override void Generate()
         {
+            int i, j;
+            
+
+            for (i = 0; i<=NodeArea.RangeX; i++)
+            {
+                for (j = 0; j<=NodeArea.RangeZ; j++)
+                {
+                    if (NodeArea.IsOpen(i,j))
+                    {
+                        NodeArea.AddNode(i,j);
+                    }
+                }
+
+            }
+
             //40 nodes, 236 connections, 1560 lookups
 
             //calc nodes per step(scans that need to be free from a corner)
@@ -24,7 +39,7 @@ namespace EasyAI.Navigation.Generators
 
             //to loop through all spaces:
                 //NodeArea.RangeX and NodeArea.RangeZ
-                //double for loop
+                //double loop
 
             //check to see if space is open:
                 //NodeArea.IsOpen(int x, int z)
