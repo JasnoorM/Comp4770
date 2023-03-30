@@ -21,9 +21,11 @@ namespace EasyAI.Navigation
 
             //look at AStarNode
             //assign lookup table to manager
-            //Navigate
+            //Navigate agent to position of node
 
+            //open node
 
+            
 
 
             // TODO - Assignment 4 - Implement A* pathfinding.

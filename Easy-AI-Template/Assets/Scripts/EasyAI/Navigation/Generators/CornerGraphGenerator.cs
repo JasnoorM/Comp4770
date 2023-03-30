@@ -24,6 +24,8 @@ namespace EasyAI.Navigation.Generators
             {
                 for (j = 0; j<=NodeArea.RangeZ; j++)
                 {
+                    //"find corner"
+
                     if (NodeArea.IsOpen(i,j))
                     {
                         NodeArea.AddNode(i,j);
