@@ -18,7 +18,7 @@ namespace EasyAI.Navigation
         /// <returns>The path of nodes to take to get from the starting position to the ending position.</returns>
         public static List<Vector3> Perform(Vector3 current, Vector3 goal, List<Connection> connections)
         {
-            // TODO - Assignment 4 - Implement A* pathfinding.
+            
             return new();
         }
     }

@@ -17,7 +17,7 @@ namespace EasyAI.Navigation.Generators
         /// </summary>
         public override void Generate()
         {
-            // TODO - Assignment 4 - Complete corner-graph node generation.
+            
         }
     }
 }
