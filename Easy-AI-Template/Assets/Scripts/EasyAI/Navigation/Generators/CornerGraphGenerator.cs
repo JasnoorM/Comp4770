@@ -11,26 +11,51 @@ namespace EasyAI.Navigation.Generators
         [Min(0)]
         [Tooltip("How far away from corners should the nodes be placed.")]
         private int cornerNodeSteps = 3;
-    
+
         /// <summary>
         /// Place nodes at convex corners.
         /// </summary>
+        /// 
+
+        
+        
         public override void Generate()
         {
-
+            
+            int check = 0;
 
             for (int i = 0; i < NodeArea.RangeX; i++)
             {
 
                 for (int j = 0; j < NodeArea.RangeZ; j++)
                 {
-                    if ()
+                    if (NodeArea.IsOpen(i,j))
                     {
-
+                        if (!NodeArea.IsOpen(i - 1, j - 1)) check++;
+                        if (!NodeArea.IsOpen(i - 1, j)) check++;
+                        if (!NodeArea.IsOpen(i, j - 1)) check++;
+                        if (!NodeArea.IsOpen(i + 1, j + 1)) check++;
+                        if (!NodeArea.IsOpen(i, j + 1)) check++;
+                        if (!NodeArea.IsOpen(i + 1, j)) check++;
+                        if (!NodeArea.IsOpen(i - 1, j + 1)) check++;
+                        if (!NodeArea.IsOpen(i + 1, j - 1)) check++;
+                        Debug.Log(check);
+                        if (check == 1)
+                        {
+                            if(NodeArea.IsOpen(i + cornerNodeSteps, j + cornerNodeSteps)) NodeArea.AddNode(i + cornerNodeSteps, j + cornerNodeSteps);
+                            if (NodeArea.IsOpen(i - cornerNodeSteps, j - cornerNodeSteps))NodeArea.AddNode(i - cornerNodeSteps, j - cornerNodeSteps);
+                        }
+                        /*else if(check == 3)
+                        {
+                            if (NodeArea.IsOpen(i + 4, j + 4)) NodeArea.AddNode(i + 4, j + 4);
+                            if (NodeArea.IsOpen(i - 4, j - 4)) NodeArea.AddNode(i - 4, j - 4);
+                        }*/
+                        check = 0;
                     }
 
                     
                 }
+                
 
             }
 
