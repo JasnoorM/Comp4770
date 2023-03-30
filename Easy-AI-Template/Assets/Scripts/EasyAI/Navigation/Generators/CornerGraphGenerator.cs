@@ -17,39 +17,40 @@ namespace EasyAI.Navigation.Generators
         /// </summary>
         public override void Generate()
         {
-            int i, j;
-            
 
-            for (i = 0; i<=NodeArea.RangeX; i++)
+
+            for (int i = 0; i < NodeArea.RangeX; i++)
             {
-                for (j = 0; j<=NodeArea.RangeZ; j++)
-                {
-                    //"find corner"
 
-                    if (NodeArea.IsOpen(i,j))
+                for (int j = 0; j < NodeArea.RangeZ; j++)
+                {
+                    if ()
                     {
-                        NodeArea.AddNode(i,j);
+
                     }
+
+                    
                 }
 
             }
 
+
             //40 nodes, 236 connections, 1560 lookups
 
             //calc nodes per step(scans that need to be free from a corner)
-                //4 nodes per step with 3 corner node steps
+            //4 nodes per step with 3 corner node steps
 
             //to loop through all spaces:
-                //NodeArea.RangeX and NodeArea.RangeZ
-                //double loop
+            //NodeArea.RangeX and NodeArea.RangeZ
+            //double loop
 
             //check to see if space is open:
-                //NodeArea.IsOpen(int x, int z)
+            //NodeArea.IsOpen(int x, int z)
 
 
             //Place node: NodeArea.Place(int x, int y)
 
-            
+
 
             // TODO - Assignment 4 - Complete corner-graph node generation.
         }
