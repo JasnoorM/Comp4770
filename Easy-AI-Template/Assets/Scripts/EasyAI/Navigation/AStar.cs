@@ -30,23 +30,21 @@ namespace EasyAI.Navigation
             foreach (Connection i in connections)
             {
                 AStarNode nodeB;
-                node = new AStarNode(i.A, goal);
-                /*while(i.B != Vector3.zero)
-                {*/                    
+                node = new AStarNode(i.A, goal);                  
                     nodeB = new AStarNode(i.B, goal);
                     if(nodeB.CostF < cost)
                     {
                         cost = nodeB.CostF;
                         minvec = i.B;
                     }
-                //}
+                
                 path.Add(minvec);
             }
 
             Manager manager = new Manager();
             manager.Agents[0].Navigate(goal);
 
-            
+
 
             // TODO - Assignment 4 - Implement A* pathfinding.
             return path;
