@@ -28,6 +28,10 @@ namespace EasyAI.Navigation
             {
                 node = new AStarNode(i.A, goal);
             }
+
+            Agent agent;
+            agent.Navigate(goal);
+
             
             // TODO - Assignment 4 - Implement A* pathfinding.
             return new();
