@@ -31,20 +31,20 @@ namespace EasyAI.Navigation
             {
                 AStarNode nodeB;
                 node = new AStarNode(i.A, goal);
-                while(i.B != null)
-                {                    
+                /*while(i.B != Vector3.zero)
+                {*/                    
                     nodeB = new AStarNode(i.B, goal);
                     if(nodeB.CostF < cost)
                     {
                         cost = nodeB.CostF;
                         minvec = i.B;
                     }
-                }
+                //}
                 path.Add(minvec);
             }
 
-            /*Agent agent;
-            agent.Navigate(goal);*/
+            Manager manager = new Manager();
+            manager.Agents[0].Navigate(goal);
 
             
 
