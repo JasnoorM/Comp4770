@@ -16,11 +16,18 @@ namespace EasyAI.Navigation
         /// <param name="goal">The end goal position.</param>
         /// <param name="connections">All node connections in the scene.</param>
         /// <returns>The path of nodes to take to get from the starting position to the ending position.</returns>
+        /// 
+
+        
         public static List<Vector3> Perform(Vector3 current, Vector3 goal, List<Connection> connections)
         {
-            AStarNode node = new AStarNode();
-
-            float i = node.CostF;
+            AStarNode node;
+            foreach (Connection i in connections)
+            {
+                node = new AStarNode(i.A, goal);
+            }
+            /*AStarNode node = new AStarNode();
+            float i = node.CostF;*/
 
 
             //look at AStarNode
