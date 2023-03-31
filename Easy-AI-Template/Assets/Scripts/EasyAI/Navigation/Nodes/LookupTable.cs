@@ -16,6 +16,8 @@ namespace EasyAI.Navigation.Nodes
     {
         public NavigationLookup[] Data => data?.ToArray();
 
+        
+
         [Tooltip("Navigation data.")]
         [SerializeField]
         private NavigationLookup[] data;

@@ -23,14 +23,29 @@ namespace EasyAI.Navigation
         {
             
             AStarNode node;
+            float cost= 200;
+            List<Vector3> path = new List<Vector3>();
+            Vector3 minvec = new Vector3();
             
             foreach (Connection i in connections)
             {
+                AStarNode nodeB;
                 node = new AStarNode(i.A, goal);
+                while(i.B != null)
+                {                    
+                    nodeB = new AStarNode(i.B, goal);
+                    if(nodeB.CostF < cost)
+                    {
+                        cost = nodeB.CostF;
+                        minvec = i.B;
+                    }
+                }
+                path.Add(minvec);
             }
             
+
             // TODO - Assignment 4 - Implement A* pathfinding.
-            return new();
+            return path;
         }
     }
 }

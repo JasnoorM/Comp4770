@@ -21,6 +21,7 @@ namespace EasyAI.Navigation
         /// The final cost of this node.
         /// </summary>
         public float CostF => CostG + CostH;
+       
 
         /// <summary>
         /// The previous node which was moved to prior to this node.
