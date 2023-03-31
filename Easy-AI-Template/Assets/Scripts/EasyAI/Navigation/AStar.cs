@@ -42,6 +42,10 @@ namespace EasyAI.Navigation
                 }
                 path.Add(minvec);
             }
+
+            Agent agent;
+            agent.Navigate(goal);
+
             
 
             // TODO - Assignment 4 - Implement A* pathfinding.
