@@ -43,8 +43,8 @@ namespace EasyAI.Navigation
                 path.Add(minvec);
             }
 
-            Agent agent;
-            agent.Navigate(goal);
+            /*Agent agent;
+            agent.Navigate(goal);*/
 
             
 
