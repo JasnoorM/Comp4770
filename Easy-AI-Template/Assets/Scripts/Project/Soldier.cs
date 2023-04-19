@@ -683,12 +683,15 @@ namespace Project
         }
 
         //Creating NavMesh for movement around map
-
-        private NavMeshAgent navAgent;
-        public void NavMovement(Vector3 movePos)
+        NavMeshAgent navAgent;
+        Vector3 position = new Vector3(0, 0, 0);
+        
+        public Vector3 NavMovement()
         {
-            navAgent = GetComponent<NavMeshAgent>();
-            navAgent.destination = movePos;
+            
+            return position;
+            
         }
+       
     }
 }

@@ -12,10 +12,20 @@ namespace Project.States
     {
 
         private NavMeshAgent navAgent;
+        Soldier SolAgent;
+        Vector3 position;
+      
         public override void Execute(Agent agent)
         {
-            Soldier SolAgent = (Soldier)agent;
-            SolAgent.NavMovement(new Vector3(0, 0, 0));
+            position = new Vector3(0, 0, 0);
+            SolAgent = (Soldier)agent;
+            navAgent = SolAgent.GetComponent<NavMeshAgent>();
+            //navAgent.autoBraking = false;
+            navAgent.SetDestination(position);
+            //SolAgent.Move(navAgent.destination);
+            
+            Debug.Log(navAgent.destination);
+
         }
     }
 }
