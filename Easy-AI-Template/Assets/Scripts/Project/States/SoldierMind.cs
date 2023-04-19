@@ -22,7 +22,7 @@ namespace Project.States
             navAgent = SolAgent.GetComponent<NavMeshAgent>();
             //navAgent.autoBraking = false;
             navAgent.SetDestination(position);
-            //SolAgent.Move(navAgent.destination);
+            //SolAgent.Navigate(navAgent.destination);
             
             Debug.Log(navAgent.destination);
 

@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7700828181764947109}
+  - component: {fileID: 2648827422080590786}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -65,6 +66,28 @@ Transform:
   m_Father: {fileID: 4324690102972426153}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &2648827422080590786
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437481027177602144}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4324690101913368731
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +367,8 @@ GameObject:
   - component: {fileID: 4027915266740351254}
   - component: {fileID: 5596074528344541089}
   - component: {fileID: 8853428054890282905}
+  - component: {fileID: 8553017399416171935}
+  - component: {fileID: 3055571053639196852}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -405,7 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09db045164814ff69ff77d2096462d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  tileCount: 0
+  timer: 0
   moveSpeed: 10
   moveAcceleration: 0
   lookSpeed: 0
@@ -479,6 +505,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87189abe381745dfb3fba3dd2387c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &8553017399416171935
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324690102972426135}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &3055571053639196852
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324690102972426135}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4324690103502335292
 GameObject:
   m_ObjectHideFlags: 0
