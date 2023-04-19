@@ -7,6 +7,7 @@ using Project.Positions;
 using Project.Weapons;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Project
@@ -25,10 +26,9 @@ namespace Project
         /// </summary>
         public enum SoliderRole : byte
         {
-            Dead = 0,
-            Collector = 1,
-            Attacker = 2,
-            Defender = 3
+            Queen = 0,
+            Pawn = 1,
+            Dead = 2
         }
         
         /// <summary>
@@ -94,7 +94,7 @@ namespace Project
         /// <summary>
         /// The health of the soldier.
         /// </summary>
-        public int Health { get; set; }
+        public int AtkPoints { get; set; }
         
         /// <summary>
         /// The currently selected weapon of the soldier.
@@ -140,7 +140,9 @@ namespace Project
         /// If the soldier is alive or not.
         /// </summary>
         public bool Alive => Role != SoliderRole.Dead;
-        
+
+        public bool Queen => Role == SoliderRole.Queen;
+
         /// <summary>
         /// The soldier's current role on the team.
         /// </summary>
@@ -211,22 +213,15 @@ namespace Project
             y = Manager.NextItem(y, h, p);
 
             // Display the role of this soldier.
-            Manager.GuiLabel(x, y, w, h, p, Role == SoliderRole.Dead ? "Respawning" : $"Role: {Role}");
+            Manager.GuiLabel(x, y, w, h, p, $"Role: {Role}");
             y = Manager.NextItem(y, h, p);
 
             // Display the health of this soldier.
-            Manager.GuiLabel(x, y, w, h, p, $"Health: {Health} / {SoldierManager.Health}");
+            Manager.GuiLabel(x, y, w, h, p, $"Health: {AtkPoints} / {SoldierManager.AtkPoints}");
             y = Manager.NextItem(y, h, p);
 
             // Display the weapon this soldier is using.
-            Manager.GuiLabel(x, y, w, h, p, Role == SoliderRole.Dead ? "Weapon: None" : WeaponIndex switch
-            {
-                (int) WeaponIndexes.MachineGun => $"Weapon: Machine Gun | Ammo: {Weapons[WeaponIndex].Ammo} / {Weapons[WeaponIndex].MaxAmmo}",
-                (int) WeaponIndexes.Shotgun => $"Weapon: Shotgun | Ammo: {Weapons[WeaponIndex].Ammo} / {Weapons[WeaponIndex].MaxAmmo}",
-                (int) WeaponIndexes.Sniper => $"Weapon: Sniper | Ammo: {Weapons[WeaponIndex].Ammo} / {Weapons[WeaponIndex].MaxAmmo}",
-                (int) WeaponIndexes.RocketLauncher => $"Weapon: Rocket Launcher | Ammo: {Weapons[WeaponIndex].Ammo} / {Weapons[WeaponIndex].MaxAmmo}",
-                _ => "Weapon: Pistol"
-            });
+            
             y = Manager.NextItem(y, h, p);
             
             // Display the enemy this soldier is fighting.
@@ -249,12 +244,7 @@ namespace Project
         /// </summary>
         public override void Perform()
         {
-            // Do nothing when dead.
-            if (Role == SoliderRole.Dead)
-            {
-                return;
-            }
-
+           
             // Remove detected enemies that have exceeded their maximum memory time.
             for (int i = 0; i < DetectedEnemies.Count; i++)
             {
@@ -343,17 +333,12 @@ namespace Project
         /// <param name="shooter">What soldier shot.</param>
         public void Damage(int amount, Soldier shooter)
         {
-            // If already dead, do nothing.
-            if (Role == SoliderRole.Dead)
-            {
-                return;
-            }
-            
+                     
             // Reduce health.
-            Health -= amount;
+            AtkPoints -= amount;
             
             // Nothing more to do if still alive.
-            if (Health <= 0)
+            if (AtkPoints <= 0)
             {
                 SoldierManager.AddKill(shooter, this);
             }
@@ -397,15 +382,29 @@ namespace Project
         /// <summary>
         /// Heal this soldier.
         /// </summary>
-        public void Heal()
+        public void SplitAtk()
         {
-            // Cannot heal if dead.
-            if (Role == SoliderRole.Dead)
+            int Total_atk = 1500;
+            int sum = 0;
+            Soldier[] team = GetTeam();
+            int[] random_percentage = new int[team.Length-1];
+                        
+            for (int i=0; i<team.Length-1; i++)
             {
-                return;
+                random_percentage[i] = Random.Range(1, 100);
+                sum += random_percentage[i];
             }
 
-            Health = SoldierManager.Health;
+            for (int i = 0; i < team.Length-1; i++)
+            {
+                random_percentage[i] = (random_percentage[i] / sum) * 100;
+            }
+
+            for(int i=0; i<team.Length-1; i++)
+            {
+                team[i].AtkPoints = random_percentage[i] * Total_atk;
+            }
+            team[team.Length - 1].AtkPoints = 15000;
         }
 
         /// <summary>
@@ -433,19 +432,13 @@ namespace Project
                 team[i].StopNavigating();
                 
                 // The closest soldier to the enemy flag becomes the collector.
-                if (i == 0)
+                if (i == team.Length-1)
                 {
-                    team[i].Role = SoliderRole.Collector;
+                    team[i].Role = SoliderRole.Queen;
                 }
-                // The nearest half become attackers.
-                else if (i <= team.Length / 2)
-                {
-                    team[i].Role = SoliderRole.Attacker;
-                }
-                // The furthest become defenders.
                 else
                 {
-                    team[i].Role = SoliderRole.Defender;
+                    team[i].Role = SoliderRole.Pawn;
                 }
             }
         }
@@ -480,17 +473,18 @@ namespace Project
             CharacterController.enabled = true;
             
             // Set a dummy role to indicate the soldier is no longer dead.
-            Role = SoliderRole.Collector;
+            Role = SoliderRole.Pawn;
             
             // Get new roles, heal, start with the machine gun, and reset to find a new point.
             AssignRoles();
-            Heal();
+            SplitAtk();
             SelectWeapon(0);
             ToggleAlive();
 
             foreach (Weapon weapon in Weapons)
             {
                 weapon.Replenish();
+
             }
         }
 
@@ -507,7 +501,7 @@ namespace Project
         /// Respawn the soldier after being killed.
         /// </summary>
         /// <returns>Nothing.</returns>
-        public IEnumerator Respawn()
+       /* public IEnumerator Respawn()
         {
             // Set that the soldier has died.
             Role = SoliderRole.Dead;
@@ -529,7 +523,7 @@ namespace Project
             
             // Spawn the soldier.
             Spawn();
-        }
+        }*/
 
         protected override void Start()
         {
@@ -569,6 +563,7 @@ namespace Project
                 meshRenderer.material = RedTeam ? SoldierManager.Red : SoldierManager.Blue;
             }
             
+
             // Spawn in.
             Spawn();
         }
@@ -685,6 +680,15 @@ namespace Project
                 // Only the selected weapon is visible, and none are visible if the soldier is dead.
                 Weapons[i].Visible(Alive && i == WeaponIndex);
             }
+        }
+
+        //Creating NavMesh for movement around map
+
+        private NavMeshAgent navAgent;
+        public void NavMovement(Vector3 movePos)
+        {
+            navAgent = GetComponent<NavMeshAgent>();
+            navAgent.destination = movePos;
         }
     }
 }

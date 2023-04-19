@@ -13,14 +13,14 @@ namespace Project
     public class SoldierManager : Manager
     {
         /// <summary>
-        /// How much health each soldier has.
+        /// How much attack points each soldier has.
         /// </summary>
-        public static int Health => SoldierSingleton.health;
+        public static int AtkPoints => SoldierSingleton.atkpoints;
 
-        /// <summary>
+     /*   /// <summary>
         /// How many seconds soldiers need to wait to respawn.
         /// </summary>
-        public static float Respawn => SoldierSingleton.respawn;
+        public static float Respawn => SoldierSingleton.respawn;*/
 
         /// <summary>
         /// How many seconds before a pickup can be used again.
@@ -108,15 +108,15 @@ namespace Project
         private int soldiersPerTeam = 3;
 
         [Header("Match Settings")]
-        [Tooltip("How much health each soldier has.")]
+        [Tooltip("How much attack points each soldier has.")]
         [Min(1)]
         [SerializeField]
-        private int health = 100;
+        private int atkpoints;
 
-        [Tooltip("How many seconds soldiers need to wait to respawn.")]
+        /*[Tooltip("How many seconds soldiers need to wait to respawn.")]
         [Min(0)]
         [SerializeField]
-        private float respawn = 10;
+        //private float respawn = 10;*/
 
         [Tooltip("How many seconds before a pickup can be used again.")]
         [Min(0)]
@@ -241,7 +241,7 @@ namespace Project
         public static void AddKill(Soldier shooter, Soldier killed)
         {
             // Reset killed player stats.
-            killed.Health = 0;
+            killed.AtkPoints = 0;
             killed.Deaths++;
             
             // Add a kill for the shooter.
@@ -263,7 +263,7 @@ namespace Project
 
             // Start the respawn counter and reassign team roles as a team member has died.
             killed.StopAllCoroutines();
-            killed.StartCoroutine(killed.Respawn());
+            //killed.StartCoroutine(killed.Respawn());
         }
 
         /// <summary>

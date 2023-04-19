@@ -1,5 +1,6 @@
 ﻿using EasyAI;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Project.States
 {
@@ -9,9 +10,12 @@ namespace Project.States
     [CreateAssetMenu(menuName = "Project/States/Soldier Mind", fileName = "Soldier Mind")]
     public class SoldierMind : State
     {
+
+        private NavMeshAgent navAgent;
         public override void Execute(Agent agent)
         {
-            // TODO - Project - Create unique behaviours for your soldiers to play capture the flag.
+            Soldier SolAgent = (Soldier)agent;
+            SolAgent.NavMovement(new Vector3(0, 0, 0));
         }
     }
 }
