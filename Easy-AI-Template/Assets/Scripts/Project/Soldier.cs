@@ -404,7 +404,7 @@ namespace Project
             {
                 team[i].AtkPoints = random_percentage[i] * Total_atk;
             }
-            team[team.Length - 1].AtkPoints = 15000;
+            team[team.Length - 1].AtkPoints = 1500;
         }
 
         /// <summary>
