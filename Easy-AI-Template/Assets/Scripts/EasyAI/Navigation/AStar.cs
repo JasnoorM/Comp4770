@@ -24,30 +24,30 @@ namespace EasyAI.Navigation
             
             AStarNode node;
             float cost= 200;
-            List<Vector3> path = new List<Vector3>();
+            List<Vector3> path = new List<Vector3>(); //shortest path
             Vector3 minvec = new Vector3();
             
-            foreach (Connection i in connections)
+            foreach (Connection i in connections) //runs to all connections
             {
                 AStarNode nodeB;
                 node = new AStarNode(i.A, goal);                  
                     nodeB = new AStarNode(i.B, goal);
-                    if(nodeB.CostF < cost)
+                    if(nodeB.CostF < cost) //checks the cost 
                     {
-                        cost = nodeB.CostF;
-                        minvec = i.B;
+                        cost = nodeB.CostF; //replace with previous smaller cost
+                        minvec = i.B; //notes which node has lowest cost
                     }
                 
-                path.Add(minvec);
+                path.Add(minvec); //add to path
             }
 
-            Manager manager = new Manager();
+            Manager manager = new Manager(); //navigates the agent
             manager.Agents[0].Navigate(goal);
 
 
 
             // TODO - Assignment 4 - Implement A* pathfinding.
-            return path;
+            return path; //returns shortest path
         }
     }
 }
