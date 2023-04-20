@@ -1,4 +1,4 @@
-﻿using EasyAI;
+using EasyAI;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,9 +14,19 @@ namespace Project.States
         private NavMeshAgent navAgent;
         Soldier SolAgent;
         Vector3 position;
+
       
         public override void Execute(Agent agent)
         {
+
+            /*position = new Vector3(0, 0, 0);
+            SolAgent = (Soldier)agent;
+            navAgent = SolAgent.GetComponent<NavMeshAgent>();
+            //navAgent.autoBraking = false;
+            //navAgent.SetDestination(position);
+            SolAgent.Navigate(position);
+            Debug.Log(position);*/
+
             
             SolAgent = (Soldier)agent;
             position = new Vector3(0,0,0);
@@ -33,6 +43,13 @@ namespace Project.States
             }
             
 
+
+            SolAgent = (Soldier)agent;
+            position = new Vector3(0, 0, 0);
+            navAgent = SolAgent.GetComponent<NavMeshAgent>();
+            //position = navAgent.destination;
+            //navAgent.destination = position;
+            
         }
     }
 }
