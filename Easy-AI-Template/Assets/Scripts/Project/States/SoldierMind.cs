@@ -23,7 +23,14 @@ namespace Project.States
             navAgent = SolAgent.GetComponent<NavMeshAgent>();
             //navAgent.SetDestination(position);
 
-            SolAgent.SetState<PursueState>();
+            if(SolAgent.isQueen)
+            {
+                SolAgent.SetState<PursueState>();
+            }
+            else
+            {
+                SolAgent.SetState<PickupState>();
+            }
             
 
         }

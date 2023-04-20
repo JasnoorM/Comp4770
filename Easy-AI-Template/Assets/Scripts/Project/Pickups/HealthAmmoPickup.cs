@@ -55,7 +55,7 @@ namespace Project.Pickups
                 
                 soldier.Log("Picked up health.");
             
-                soldier.SplitAtk();
+                soldier.AtkPoints += 50;
                 StartCoroutine(ReadyDelay());
 
                 return;
