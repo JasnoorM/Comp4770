@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EasyAI;
+using UnityEngine.AI;
 
 
 namespace Project.States
@@ -9,12 +10,14 @@ namespace Project.States
     public class PursueState : State
     {
         Soldier SolAgent;
+        NavMeshAgent NavAgent;
         public override void Enter(Agent agent)
         {
 
-            
+            SolAgent = (Soldier)agent;
             agent.Log("Pursuing target");
-            
+            NavAgent = SolAgent.GetComponent<NavMeshAgent>();
+
         }
         public override void Execute(Agent agent)
         {
@@ -47,7 +50,19 @@ namespace Project.States
                 }
                 else
                 {
+                    //NavAgent.SetDestination(Enemy.headPosition.position);
                     SolAgent.Navigate(Enemy.headPosition.position);
+
+                    if(Vector3.Distance(SolAgent.headPosition.position, Enemy.headPosition.position)< 2f && (SolAgent.AtkPoints > Enemy.AtkPoints))
+                    {
+                        Debug.Log(this.name + "We won");
+                        Enemy.SwitchTeam();
+                    }
+                    else if(SolAgent.AtkPoints < Enemy.AtkPoints)
+                    {
+                        Debug.Log("Enemy won");
+                        SolAgent.SwitchTeam();
+                    }
                 }
             }
 

@@ -31,8 +31,8 @@ namespace Project.States
             if (pointspickup != null)
             {
                 Vector3 position = pointspickup.transform.position;
-                //SolAgent.Navigate(position);
-                NavAgent.SetDestination(position);
+                SolAgent.Navigate(position);
+                //NavAgent.SetDestination(position);
                 
             }
 

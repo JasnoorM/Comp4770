@@ -690,6 +690,32 @@ namespace Project
         //Creating NavMesh for movement around map
         NavMeshAgent navAgent;
         Vector3 position = new Vector3(0, 0, 0);
+
+        public void SwitchTeam()
+        {
+
+            MeshRenderer[] mesh = this.colorVisuals;
+
+            if (this.RedTeam)
+            {
+                SoldierManager.TeamBlue.Add(this);
+                SoldierManager.TeamRed.Remove(this);
+                foreach(MeshRenderer a in mesh)
+                {
+                    a.material = SoldierManager.Blue;
+                }
+                
+            }
+            else
+            {
+                SoldierManager.TeamRed.Add(this);
+                SoldierManager.TeamBlue.Remove(this);
+                foreach (MeshRenderer a in mesh)
+                {
+                    a.material = SoldierManager.Red;
+                }
+            }
+        }
         
        
     }

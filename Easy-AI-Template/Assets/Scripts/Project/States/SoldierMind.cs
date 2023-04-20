@@ -30,8 +30,11 @@ namespace Project.States
 
 
             //SolAgent.SetState<PursueState>();
+            SolAgent = (Soldier)agent;
+            
+            
 
-            if(SolAgent.isQueen)
+            if (SolAgent.isQueen)
             {
                 SolAgent.SetState<PursueState>();
             }
@@ -49,7 +52,7 @@ namespace Project.States
             navAgent.SetDestination(position);
 
             
-            SolAgent.Navigate(position);
+            //SolAgent.Navigate(position);
 
 
 
