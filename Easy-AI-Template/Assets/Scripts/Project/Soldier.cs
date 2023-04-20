@@ -39,8 +39,7 @@ namespace Project
             MachineGun = 0,
             Shotgun = 1,
             Sniper = 2,
-            RocketLauncher = 3,
-            Pistol = 4
+
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace Project
         /// <summary>
         /// Which weapons the soldier has a preference to currently use.
         /// </summary>
-        public readonly int[] WeaponPriority = new int[(int) WeaponIndexes.Pistol + 1];
+        public readonly int[] WeaponPriority = new int[(int) WeaponIndexes.Sniper + 1];
 
         /// <summary>
         /// If this soldier is carrying the flag.
@@ -265,7 +264,7 @@ namespace Project
             base.Perform();
 
             int priority = int.MaxValue;
-            int selected = (int) WeaponIndexes.Pistol;
+            int selected = (int) WeaponIndexes.Sniper;
             
             // Go through the weapon priority and select the most preferred option which has ammo.
             for (int i = 0; i < WeaponPriority.Length; i++)
@@ -662,7 +661,7 @@ namespace Project
                     WeaponIndexes.MachineGun => "Selecting machine gun.",
                     WeaponIndexes.Shotgun => "Selecting shotgun.",
                     WeaponIndexes.Sniper => "Selecting sniper.",
-                    WeaponIndexes.RocketLauncher => "Selecting rocket launcher.",
+                    
                     _=> "Selecting pistol."
                 });
             }
@@ -696,6 +695,7 @@ namespace Project
 
             MeshRenderer[] mesh = this.colorVisuals;
 
+            
             if (this.RedTeam)
             {
                 SoldierManager.TeamBlue.Add(this);
@@ -713,6 +713,66 @@ namespace Project
                 foreach (MeshRenderer a in mesh)
                 {
                     a.material = SoldierManager.Red;
+                }
+            }
+        }
+
+        public void Equalise()
+        {
+            MeshRenderer[] mesh = this.colorVisuals;
+            if (SoldierManager.TeamRed.Count > SoldierManager.TeamBlue.Count)
+            {
+                for(int i= SoldierManager.TeamRed.Count-1; i>= SoldierManager.TeamBlue.Count; i--)
+                {
+                    SoldierManager.TeamBlue.Add(SoldierManager.TeamRed[i - 1]);
+                    SoldierManager.TeamRed.Remove(SoldierManager.TeamRed[i-1]);                    
+                    foreach (MeshRenderer a in mesh)
+                    {
+                        a.material = SoldierManager.Blue;
+                    }
+                }
+            }
+
+            else if (SoldierManager.TeamRed.Count < SoldierManager.TeamBlue.Count)
+            {
+                for (int i = SoldierManager.TeamBlue.Count - 1; i >= SoldierManager.TeamRed.Count; i--)
+                {
+                    SoldierManager.TeamRed.Add(SoldierManager.TeamBlue[i - 1]);
+                    SoldierManager.TeamBlue.Remove(SoldierManager.TeamBlue[i - 1]);
+                    foreach (MeshRenderer a in mesh)
+                    {
+                        a.material = SoldierManager.Red;
+                    }
+                }
+            }
+        }
+
+        public void Queen_Switch()
+        {
+            if (this.RedTeam)
+            {
+                foreach(Soldier a in SoldierManager.TeamRed)
+                {
+                    if (a.isQueen)
+                    {
+                        a.Role = SoliderRole.Pawn;
+                        a.AtkPoints = this.AtkPoints;
+                        this.Role = SoliderRole.Queen;
+                        this.AtkPoints = 1500;
+                    }
+                }
+            }
+            else
+            {
+                foreach (Soldier a in SoldierManager.TeamBlue)
+                {
+                    if (a.isQueen)
+                    {
+                        a.Role = SoliderRole.Pawn;
+                        a.AtkPoints = this.AtkPoints;
+                        this.Role = SoliderRole.Queen;
+                        this.AtkPoints = 1500;
+                    }
                 }
             }
         }
