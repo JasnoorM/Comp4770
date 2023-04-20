@@ -39,7 +39,7 @@ namespace Project.States
             {
                 SolAgent.SetState<PickupState>();
             }
-
+            
             
 
 
