@@ -203,7 +203,7 @@ namespace Project.Weapons
                 Soldier.WeaponIndexes.MachineGun => "Shooting machine gun.",
                 Soldier.WeaponIndexes.Shotgun => "Shooting shotgun.",
                 Soldier.WeaponIndexes.Sniper => "Shooting sniper.",
-                Soldier.WeaponIndexes.RocketLauncher => "Shooting rocket launcher.",
+                
                 _=> "Shooting pistol."
             });
 

@@ -21,6 +21,12 @@ namespace Project.Pickups
         [Tooltip("The visuals object to rotate.")]
         [SerializeField]
         private Transform visuals;
+
+        public enum MysteryPickups{
+            Equalise = 0, 
+            QueenChange = 1,
+            SwitchTeam = 2
+        };
         
         /// <summary>
         /// If the pickup is ready to be picked up.
@@ -54,23 +60,23 @@ namespace Project.Pickups
 
                 return;
             }
-
-            // Replenish ammo if needed.
-            if (soldier.Weapons.Length <= weaponIndex || soldier.Weapons[weaponIndex].MaxAmmo < 0 || ammo[weaponIndex] >= soldier.Weapons[weaponIndex].MaxAmmo)
+            else if(weaponIndex == 0)
             {
-                return;
+                soldier.Equalise();
+                StartCoroutine(ReadyDelay());
+            }
+            else if(weaponIndex == 1)
+            {
+                soldier.Queen_Switch();
+                StartCoroutine(ReadyDelay());
+            }
+            else if(weaponIndex == 2)
+            {
+                soldier.SwitchTeam();
+                StartCoroutine(ReadyDelay());
             }
             
-            soldier.Log((Soldier.WeaponIndexes) weaponIndex switch
-            {
-                Soldier.WeaponIndexes.MachineGun => "Replenished machine gun.",
-                Soldier.WeaponIndexes.Shotgun => "Replenished shotgun.",
-                Soldier.WeaponIndexes.Sniper => "Replenished sniper.",
-                Soldier.WeaponIndexes.RocketLauncher => "Replenished rocket launcher.",
-                _=> "Replenished pistol."
-            });
             
-            soldier.Weapons[weaponIndex].Replenish();
             StartCoroutine(ReadyDelay());
         }
         
