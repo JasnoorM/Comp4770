@@ -38,15 +38,17 @@ namespace Project.States
 
                 if (Enemy.isQueen || Enemy.AtkPoints > SolAgent.AtkPoints)
                 {
-                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Evade);
-                    
+                    SolAgent.Move(Enemy.headPosition.position, EasyAI.Navigation.Steering.Behaviour.Evade);
+
                 }
-                else if(SolAgent.DetectedEnemies == null)
+                else if (SolAgent.DetectedEnemies == null)
                 {
                     SolAgent.SetState<PickupState>();
                 }
                 else
-                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Pursue);
+                {
+                    SolAgent.Navigate(Enemy.headPosition.position);
+                }
             }
 
 
