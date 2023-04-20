@@ -401,7 +401,7 @@ namespace Project
                         memory.Enemy = enemy;
                         memory.Position = enemy.headPosition.position;
                         memory.Visible = true;
-                        memory.HasFlag = FlagPickup.RedFlag != null && FlagPickup.RedFlag.carryingPlayer == enemy || FlagPickup.BlueFlag != null && FlagPickup.BlueFlag.carryingPlayer == enemy;
+                        memory.Atkpoints = enemy.AtkPoints;
                     }
                     // Otherwise, update the existing memory.
                     else
@@ -412,7 +412,7 @@ namespace Project
                             Enemy = enemy,
                             Position = enemy.headPosition.position,
                             Visible = true,
-                            HasFlag = FlagPickup.RedFlag != null && FlagPickup.RedFlag.carryingPlayer == enemy || FlagPickup.BlueFlag != null && FlagPickup.BlueFlag.carryingPlayer == enemy
+                            Atkpoints = enemy.AtkPoints
                         });
                     }
 

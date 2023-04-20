@@ -50,13 +50,15 @@ namespace Project
         {
             public Soldier Enemy;
 
-            public bool HasFlag;
+            public int Atkpoints;
 
             public bool Visible;
 
             public Vector3 Position;
 
             public float DeltaTime;
+
+            public float Distance;
         }
 
         /// <summary>
@@ -69,6 +71,7 @@ namespace Project
             public Vector3 Position;
 
             public bool Visible;
+
         }
 
         [Tooltip("The position of the solder's head.")]
@@ -141,7 +144,7 @@ namespace Project
         /// </summary>
         public bool Alive => Role != SoliderRole.Dead;
 
-        public bool Queen => Role == SoliderRole.Queen;
+        public bool isQueen => Role == SoliderRole.Queen;
 
         /// <summary>
         /// The soldier's current role on the team.
@@ -364,10 +367,11 @@ namespace Project
                 memory.DeltaTime = 0;
                 memory.Position = enemy.headPosition.position;
                 memory.Visible = false;
-                memory.HasFlag = false;
+                memory.Atkpoints = enemy.AtkPoints;
+                memory.Distance = Vector3.Distance(this.headPosition.position , memory.Position);
                 return;
             }
-            
+
             // Otherwise add the instance into memory.
             DetectedEnemies.Add(new()
             {
@@ -375,8 +379,9 @@ namespace Project
                 Enemy = enemy,
                 Position = enemy.headPosition.position,
                 Visible = false,
-                HasFlag = false
-            });
+                Atkpoints = enemy.AtkPoints,
+                Distance = Vector3.Distance(this.headPosition.position, memory.Position)
+        });
         }
 
         /// <summary>
@@ -686,12 +691,6 @@ namespace Project
         NavMeshAgent navAgent;
         Vector3 position = new Vector3(0, 0, 0);
         
-        public Vector3 NavMovement()
-        {
-            
-            return position;
-            
-        }
        
     }
 }
