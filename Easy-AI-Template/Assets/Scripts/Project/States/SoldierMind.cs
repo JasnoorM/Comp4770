@@ -28,7 +28,18 @@ namespace Project.States
             Debug.Log(position);*/
 
 
+
             //SolAgent.SetState<PursueState>();
+
+            if(SolAgent.isQueen)
+            {
+                SolAgent.SetState<PursueState>();
+            }
+            else
+            {
+                SolAgent.SetState<PickupState>();
+            }
+
             
 
 

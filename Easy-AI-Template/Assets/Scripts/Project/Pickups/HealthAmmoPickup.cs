@@ -48,14 +48,8 @@ namespace Project.Pickups
             // If it was a health pickup, heal if the soldier is not at full health.
             if (weaponIndex < 0)
             {
-                if (soldier.AtkPoints >= SoldierManager.AtkPoints)
-                {
-                    return;
-                }
-                
-                soldier.Log("Picked up health.");
-            
-                soldier.SplitAtk();
+                           
+                soldier.AtkPoints += 50;
                 StartCoroutine(ReadyDelay());
 
                 return;

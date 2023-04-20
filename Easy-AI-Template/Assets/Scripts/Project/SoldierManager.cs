@@ -289,7 +289,7 @@ namespace Project
         /// </summary>
         /// <param name="agent">The agent.</param>
         /// <returns>The health pack to move to or null if none are ready.</returns>
-        public static HealthAmmoPickup NearestHealthPickup(Agent agent)
+        public static HealthAmmoPickup NearestPointPickup(Agent agent)
         {
             // A health pickup is just a weapon pickup with an index of -1, so simply return that.
             return NearestAmmoPickup(agent, -1);

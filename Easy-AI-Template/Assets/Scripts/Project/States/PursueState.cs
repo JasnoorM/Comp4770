@@ -9,7 +9,13 @@ namespace Project.States
     public class PursueState : State
     {
         Soldier SolAgent;
+        public override void Enter(Agent agent)
+        {
 
+            
+            agent.Log("Pursuing target");
+            
+        }
         public override void Execute(Agent agent)
         {
             base.Execute(agent);
@@ -32,10 +38,17 @@ namespace Project.States
 
                 if (Enemy.isQueen || Enemy.AtkPoints > SolAgent.AtkPoints)
                 {
-                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Evade);
+                    SolAgent.Move(Enemy.headPosition.position, EasyAI.Navigation.Steering.Behaviour.Evade);
+
+                }
+                else if (SolAgent.DetectedEnemies == null)
+                {
+                    SolAgent.SetState<PickupState>();
                 }
                 else
-                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Pursue);
+                {
+                    SolAgent.Navigate(Enemy.headPosition.position);
+                }
             }
 
 
