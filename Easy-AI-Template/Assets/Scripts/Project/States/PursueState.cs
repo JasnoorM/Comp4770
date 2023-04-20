@@ -32,12 +32,10 @@ namespace Project.States
 
                 if (Enemy.isQueen || Enemy.AtkPoints > SolAgent.AtkPoints)
                 {
-                    //SolAgent.SetState<EvadeState>();
-                    Debug.Log("Hello");
-                    SolAgent.Navigate(new Vector3(0,0,0));
+                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Evade);
                 }
                 else
-                    SolAgent.Navigate(Enemy.headPosition.position);
+                    SolAgent.Move(Enemy.headPosition, EasyAI.Navigation.Steering.Behaviour.Pursue);
             }
 
 
