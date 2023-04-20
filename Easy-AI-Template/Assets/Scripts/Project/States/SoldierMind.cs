@@ -27,11 +27,9 @@ namespace Project.States
             SolAgent.Navigate(position);
             Debug.Log(position);*/
 
-            
-            SolAgent = (Soldier)agent;
-            position = new Vector3(0,0,0);
-            navAgent = SolAgent.GetComponent<NavMeshAgent>();
-            //navAgent.SetDestination(position);
+
+
+            //SolAgent.SetState<PursueState>();
 
             if(SolAgent.isQueen)
             {
@@ -41,15 +39,20 @@ namespace Project.States
             {
                 SolAgent.SetState<PickupState>();
             }
+
             
 
 
             SolAgent = (Soldier)agent;
             position = new Vector3(0, 0, 0);
             navAgent = SolAgent.GetComponent<NavMeshAgent>();
-            //position = navAgent.destination;
-            //navAgent.destination = position;
+            navAgent.SetDestination(position);
+
             
+            SolAgent.Navigate(position);
+
+
+
         }
     }
 }
