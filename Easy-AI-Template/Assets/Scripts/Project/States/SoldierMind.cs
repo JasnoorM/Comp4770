@@ -17,14 +17,14 @@ namespace Project.States
       
         public override void Execute(Agent agent)
         {
-            position = new Vector3(0, 0, 0);
-            SolAgent = (Soldier)agent;
-            navAgent = SolAgent.GetComponent<NavMeshAgent>();
-            //navAgent.autoBraking = false;
-            navAgent.SetDestination(position);
-            //SolAgent.Navigate(navAgent.destination);
             
-            Debug.Log(navAgent.destination);
+            SolAgent = (Soldier)agent;
+            position = new Vector3(0,0,0);
+            navAgent = SolAgent.GetComponent<NavMeshAgent>();
+            //navAgent.SetDestination(position);
+
+            SolAgent.SetState<PursueState>();
+            
 
         }
     }
