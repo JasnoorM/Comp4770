@@ -34,8 +34,9 @@ namespace Project.States
                 Vector3 position = pointspickup.transform.position;
                 SolAgent.Move(position);
                 pickedup = true;
+                SolAgent.SetState<PursueState>();
                 //NavAgent.SetDestination(position);
-                
+
             }
 
             if(pickedup)

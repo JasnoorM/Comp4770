@@ -20,7 +20,7 @@ namespace Project.States
 
         void Start()
         {
-            
+
             elapsed = 0.0f;
         }
 
@@ -44,12 +44,12 @@ namespace Project.States
 
 
 
-           if (SolAgent.isQueen)
+
 
             if (SolAgent.isQueen)
 
             {
-                 SolAgent.SetState<PursueState>();
+                SolAgent.SetState<PursueState>();
             }
             else
             {
@@ -57,16 +57,16 @@ namespace Project.States
                 SolAgent.SetState<PickupState>();
             }
 
-                 SolAgent.SetState<PickupState>();
-            }
 
 
 
-           /* position = new Vector3(0, 0, 0);
-            SolAgent = (Soldier)agent;
-            SolAgent.NavMeshMove(position);*/
 
-            
+
+            /* position = new Vector3(0, 0, 0);
+             SolAgent = (Soldier)agent;
+             SolAgent.NavMeshMove(position);*/
+
+
 
             //SolAgent.Navigate(position);
 
@@ -86,3 +86,4 @@ namespace Project.States
 
         }
     }
+}
