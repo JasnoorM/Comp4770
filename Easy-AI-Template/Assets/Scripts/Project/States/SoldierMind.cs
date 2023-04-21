@@ -15,7 +15,7 @@ namespace Project.States
         Soldier SolAgent;
         Vector3 position;
 
-        [SerializeField] private Transform movp;
+        
 
 
         public override void Execute(Agent agent)
@@ -36,26 +36,26 @@ namespace Project.States
 
 
 
-           /* if (SolAgent.isQueen)
+           if (SolAgent.isQueen)
             {
                 SolAgent.SetState<PursueState>();
             }
             else
             {
                 SolAgent.SetState<PickupState>();
-            }*/
+            }
             
             
 
 
             //SolAgent = (Soldier)agent;
-            position = new Vector3(10, 0, 10);
-            navAgent = SolAgent.GetComponent<NavMeshAgent>();
-            navAgent.SetDestination(position);
+            //position = new Vector3(10, 0, 10);
+            //navAgent = SolAgent.GetComponent<NavMeshAgent>();
+            //navAgent.SetDestination(position);
 
             //navAgent.destination = movp.position;
 
-            SolAgent.Navigate(position);
+            //SolAgent.Navigate(position);
             //navAgent.SetDestination(position);
 
 
