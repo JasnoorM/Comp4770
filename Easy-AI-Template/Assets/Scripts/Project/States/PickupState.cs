@@ -15,6 +15,7 @@ namespace Project.States
         NearestPointPickupSensor point;
         Pickups.HealthAmmoPickup pointspickup;
         NavMeshAgent NavAgent;
+        private bool pickedup = true;
         public override void Enter(Agent agent)
         {
 
@@ -32,12 +33,14 @@ namespace Project.States
             {
                 Vector3 position = pointspickup.transform.position;
                 SolAgent.Move(position);
+                pickedup = true;
                 //NavAgent.SetDestination(position);
                 
             }
 
-            if(SolAgent.DetectedEnemies != null)
+            if(pickedup)
             {
+                Debug.Log("Pursuing now");
                 SolAgent.SetState<PursueState>();
             }
 
