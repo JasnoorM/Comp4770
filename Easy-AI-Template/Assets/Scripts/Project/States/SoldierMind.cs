@@ -41,20 +41,20 @@ namespace Project.States
 
 
 
-           /* if (SolAgent.isQueen)
+            if (SolAgent.isQueen)
             {
-             //   SolAgent.SetState<PursueState>();
+                 SolAgent.SetState<PursueState>();
             }
             else
             {
-               // SolAgent.SetState<PickupState>();
-            }*/
+                 SolAgent.SetState<PickupState>();
+            }
 
 
 
-            position = new Vector3(0, 0, 0);
+           /* position = new Vector3(0, 0, 0);
             SolAgent = (Soldier)agent;
-            SolAgent.NavMeshMove(position);
+            SolAgent.NavMeshMove(position);*/
             
 
             //SolAgent.Navigate(position);
