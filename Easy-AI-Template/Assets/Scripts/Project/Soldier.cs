@@ -687,8 +687,7 @@ namespace Project
         }
 
         //Creating NavMesh for movement around map
-        NavMeshAgent navAgent;
-        Vector3 position = new Vector3(0, 0, 0);
+        
 
         public void SwitchTeam()
         {
@@ -776,7 +775,26 @@ namespace Project
                 }
             }
         }
+
+        NavMeshPath path;
+        NavMeshAgent navAgent;
         
+        public void NavMeshMove(Vector3 position, EasyAI.Navigation.Steering.Behaviour behaviour = EasyAI.Navigation.Steering.Behaviour.Seek)
+        {
+            
+            
+            path = new NavMeshPath();
+            navAgent = GetComponent<NavMeshAgent>();
+
+            Debug.Log(navAgent.CalculatePath(position, path));
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                //navAgent.Move(path.corners[i]);
+                Move(path.corners[i]);
+                //navAgent.CalculatePath(path.corners[i], path);
+
+            }
+        }
        
     }
 }

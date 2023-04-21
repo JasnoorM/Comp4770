@@ -51,7 +51,7 @@ namespace Project.States
                 else
                 {
                     //NavAgent.SetDestination(Enemy.headPosition.position);
-                    SolAgent.Navigate(Enemy.headPosition.position);
+                    SolAgent.Move(Enemy.headPosition.position, EasyAI.Navigation.Steering.Behaviour.Pursue);
 
                     if(Vector3.Distance(SolAgent.headPosition.position, Enemy.headPosition.position)< 2f && (SolAgent.AtkPoints > Enemy.AtkPoints))
                     {

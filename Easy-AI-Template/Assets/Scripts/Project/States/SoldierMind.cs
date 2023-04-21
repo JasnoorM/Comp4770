@@ -14,8 +14,15 @@ namespace Project.States
         private NavMeshAgent navAgent;
         Soldier SolAgent;
         Vector3 position;
+        private NavMeshPath path;
+        private float elapsed = 0.0f;
 
-        
+
+        void Start()
+        {
+            
+            elapsed = 0.0f;
+        }
 
 
         public override void Execute(Agent agent)
@@ -36,16 +43,32 @@ namespace Project.States
 
 
 
+
            if (SolAgent.isQueen)
+
+            if (SolAgent.isQueen)
+
             {
-                SolAgent.SetState<PursueState>();
+                 SolAgent.SetState<PursueState>();
             }
             else
             {
+
                 SolAgent.SetState<PickupState>();
             }
+
+                 SolAgent.SetState<PickupState>();
+            }
+
+
+
+           /* position = new Vector3(0, 0, 0);
+            SolAgent = (Soldier)agent;
+            SolAgent.NavMeshMove(position);*/
+
             
-            
+
+            //SolAgent.Navigate(position);
 
 
             //SolAgent = (Soldier)agent;
@@ -54,6 +77,8 @@ namespace Project.States
             //navAgent.SetDestination(position);
 
             //navAgent.destination = movp.position;
+
+
 
             //SolAgent.Navigate(position);
             //navAgent.SetDestination(position);
