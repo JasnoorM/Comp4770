@@ -777,6 +777,22 @@ namespace Project
             }
         }
         
+        public void NavMeshMove(Vector3 position)
+        {
+            
+            
+            NavMeshPath path = new NavMeshPath();
+            NavMeshAgent navAgent = GetComponent<NavMeshAgent>();
+
+            Debug.Log(navAgent.CalculatePath(position, path));
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                //navAgent.Move(path.corners[i]);
+                Move(path.corners[i]);
+                //navAgent.CalculatePath(path.corners[i], path);
+
+            }
+        }
        
     }
 }
