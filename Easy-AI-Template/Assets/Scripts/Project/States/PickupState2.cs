@@ -8,12 +8,10 @@ using UnityEngine.AI;
 
 namespace Project.States
 {
-    public class PickupState : State
+    public class PickupState2 : State
     {
 
         Soldier SolAgent;
-        NearestPointPickupSensor point;
-        Pickups.HealthAmmoPickup pointspickup;
         Pickups.HealthAmmoPickup mysterypickup;
         NearestAmmoPickupSensor mystery;
         NavMeshAgent NavAgent;
@@ -23,26 +21,20 @@ namespace Project.States
 
             SolAgent = (Soldier)agent;
             NavAgent = SolAgent.GetComponent<NavMeshAgent>();
-            point = SolAgent.GetComponent<NearestPointPickupSensor>();
             mystery = SolAgent.GetComponent<NearestAmmoPickupSensor>();
-            pointspickup = (Pickups.HealthAmmoPickup)point.Sense();  //sense the nearest pickup
             mysterypickup = (Pickups.HealthAmmoPickup)mystery.Sense();
         }
         public override void Execute(Agent agent)
         {
             base.Execute(agent);
 
-            if (pointspickup != null)
+            if (mysterypickup != null)
             {
-                Vector3 position = pointspickup.transform.position;
-                NavAgent.SetDestination(position);
+                Vector3 position = mysterypickup.transform.position;
+                SolAgent.NavMeshMove(position, NavAgent);
                 pickedup = true;
                 SolAgent.SetState<PursueState>();
-
-
             }
-            else SolAgent.SetState<PickupState2>();
-
             
 
             if(pickedup)

@@ -1,3 +1,18 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 746a4623f8434214afb1e8af02c2a315
-timeCreated: 1650075591
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mind: {instanceID: 0}
+  - lookupTable: {instanceID: 0}
+  - selectedCamera: {instanceID: 0}
+  - soldierPrefab: {instanceID: 0}
+  - red: {instanceID: 0}
+  - blue: {instanceID: 0}
+  - gold: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

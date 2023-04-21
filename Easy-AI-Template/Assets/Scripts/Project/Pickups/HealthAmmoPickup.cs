@@ -54,8 +54,8 @@ namespace Project.Pickups
             // If it was a health pickup, heal if the soldier is not at full health.
             if (weaponIndex < 0)
             {
-                           
-                soldier.AtkPoints += 50;
+
+                soldier.AtkPoints += Random.Range(50, 100);
                 StartCoroutine(ReadyDelay());
 
                 return;
@@ -73,7 +73,7 @@ namespace Project.Pickups
             else if(weaponIndex == 2)
             {
                 soldier.SwitchTeam();
-                StartCoroutine(ReadyDelay());
+                StartCoroutine(ReadyDelay());   
             }
             
             

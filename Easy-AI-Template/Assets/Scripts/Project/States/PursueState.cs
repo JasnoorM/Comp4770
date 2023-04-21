@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EasyAI;
 using UnityEngine.AI;
+using System.Linq;
 
 
 namespace Project.States
@@ -10,62 +11,61 @@ namespace Project.States
     public class PursueState : State
     {
         Soldier SolAgent;
-        NavMeshAgent NavAgent;
+        NavMeshAgent navAgent;
         public override void Enter(Agent agent)
         {
-
+            
             SolAgent = (Soldier)agent;
-            agent.Log("Pursuing target");
-            NavAgent = SolAgent.GetComponent<NavMeshAgent>();
-
         }
         public override void Execute(Agent agent)
         {
-            base.Execute(agent);
-            float distance = 1000;
-            
 
-            SolAgent = (Soldier)agent;
-            Soldier Enemy = (Soldier)agent;
-            
+            NavMeshAgent navAgent = SolAgent.GetComponent<NavMeshAgent>();
+
             if (SolAgent != null)
             {
-                foreach(Soldier.EnemyMemory a in SolAgent.DetectedEnemies)    
+                Soldier.EnemyMemory target = SolAgent.DetectedEnemies.OrderBy(e => e.Distance).FirstOrDefault();
+
+                if (target != null)
                 {
-                    if(a.Distance < distance)
+                    if (target.Enemy.isQueen || target.Enemy.AtkPoints > SolAgent.AtkPoints)
                     {
-                        distance = a.Distance;
-                        Enemy = a.Enemy;
+                        
+                        SolAgent.NavMeshMove(-target.Position, navAgent);
+
+                    }
+                    else if (SolAgent.DetectedEnemies == null)
+                    {
+                        
+                        SolAgent.SetState<PickupState>();
+                    }
+                    else
+                    {
+                        //navAgent.SetDestination(target.Position);
+                        //SolAgent.NavMeshMove(target.Position, navAgent);
+                        //Debug.Log(Enemy.transform.position);
+
+
+                        
+                        if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 20f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
+                        {
+                            
+                            target.Enemy.SwitchTeam();
+                            target.Enemy.AtkPoints -= 50;
+                            SolAgent.AtkPoints += 50;
+                        }
+                        else
+                        {
+
+                            SolAgent.SwitchTeam();
+                            target.Enemy.AtkPoints += 50;
+                            SolAgent.AtkPoints -= 50;
+                        }
                     }
                 }
-
-                if (Enemy.isQueen || Enemy.AtkPoints > SolAgent.AtkPoints)
-                {
-                    SolAgent.Move(Enemy.headPosition.position, EasyAI.Navigation.Steering.Behaviour.Evade);
-
-                }
-                else if (SolAgent.DetectedEnemies == null)
-                {
-                    SolAgent.SetState<PickupState>();
-                }
-                else
-                {
-                    //NavAgent.SetDestination(Enemy.headPosition.position);
-                    SolAgent.Move(Enemy.headPosition.position, EasyAI.Navigation.Steering.Behaviour.Pursue);
-
-                    if(Vector3.Distance(SolAgent.headPosition.position, Enemy.headPosition.position)< 2f && (SolAgent.AtkPoints > Enemy.AtkPoints))
-                    {
-                        Debug.Log(this.name + "We won");
-                        Enemy.SwitchTeam();
-                    }
-                    else if(SolAgent.AtkPoints < Enemy.AtkPoints)
-                    {
-                        Debug.Log("Enemy won");
-                        SolAgent.SwitchTeam();
-                    }
-                }
+                
             }
-
+            
 
             
         }

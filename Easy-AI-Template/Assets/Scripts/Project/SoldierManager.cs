@@ -17,6 +17,8 @@ namespace Project
         /// </summary>
         public static int AtkPoints => SoldierSingleton.atkpoints;
 
+
+
      /*   /// <summary>
         /// How many seconds soldiers need to wait to respawn.
         /// </summary>
@@ -46,6 +48,8 @@ namespace Project
         /// The material to apply to the blue soldiers.
         /// </summary>
         public static Material Blue => SoldierSingleton.blue;
+
+        public static Material Gold => SoldierSingleton.gold;
 
         /// <summary>
         /// The flags captured by the red team.
@@ -162,6 +166,10 @@ namespace Project
         [Tooltip("The material to apply to the blue soldiers.")]
         [SerializeField]
         private Material blue;
+
+        [Tooltip("The material to apply to the blue soldiers.")]
+        [SerializeField]
+        private Material gold;
 
         /// <summary>
         /// The flags captured by the red team.

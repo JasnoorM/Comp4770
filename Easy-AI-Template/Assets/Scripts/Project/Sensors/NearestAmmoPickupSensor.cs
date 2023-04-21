@@ -23,36 +23,22 @@ namespace Project.Sensors
             
             // Store the chosen ammo pickup to move to.
             HealthAmmoPickup selected = null;
-            int priority = int.MaxValue;
+            HealthAmmoPickup pickup = null;
             
-            // Go through every weapon type to consider pickups.
-            for (int i = 0; i < soldier.WeaponPriority.Length; i++)
+            
+            if(soldier.isLosing)
             {
-                // If the weapon has infinite ammo or has its max ammo, continue.
-                if (soldier.Weapons[i].MaxAmmo < 0 || soldier.Weapons[i].Ammo >= soldier.Weapons[i].MaxAmmo)
-                {
-                    continue;
-                }
-
-                // If a pickup has already been found and the priority of that weapon is higher, continue.
-                if (selected != null && priority <= soldier.WeaponPriority[i])
-                {
-                    continue;
-                }
-                
-                // Get the nearest available ammo pickup.
-                HealthAmmoPickup pickup = SoldierManager.NearestAmmoPickup(soldier, i);
-
-                // If no ammo pickup was available, continue.
-                if (pickup == null)
-                {
-                    continue;
-                }
-
-                // Set the chosen pickup.
-                selected = pickup;
-                priority = soldier.WeaponPriority[i];
+                pickup = SoldierManager.NearestAmmoPickup(soldier, Random.Range(0, 1));
             }
+            else
+            {
+                pickup = SoldierManager.NearestAmmoPickup(soldier, 2);
+                
+            }
+            
+
+            // Set the chosen pickup.
+            selected = pickup;                      
 
             return selected;
         }

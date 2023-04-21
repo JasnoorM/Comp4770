@@ -15,7 +15,7 @@ namespace Project
     /// <summary>
     /// Agent used to control the soldiers in the project.
     /// </summary>
-    public class Soldier : CharacterAgent
+    public class Soldier : TransformAgent
     {
         /// <summary>
         /// The behaviour of soldiers is dependent upon their role on the team.
@@ -144,6 +144,8 @@ namespace Project
         public bool Alive => Role != SoliderRole.Dead;
 
         public bool isQueen => Role == SoliderRole.Queen;
+
+        public bool isLosing => (RedTeam && SoldierManager.TeamRed.Count < SoldierManager.TeamBlue.Count) || (!RedTeam && SoldierManager.TeamRed.Count > SoldierManager.TeamBlue.Count)? true : false;
 
         /// <summary>
         /// The soldier's current role on the team.
@@ -292,14 +294,14 @@ namespace Project
         /// <summary>
         /// Character controller movement.
         /// </summary>
-        public override void MovementCalculations()
+       /* public override void MovementCalculations()
         {
             // Only move when the controller is enabled to avoid throwing an error as it needs to be disabled when dead.
             if (CharacterController != null && CharacterController.enabled)
             {
                 base.MovementCalculations();
             }
-        }
+        }*/
 
         /// <summary>
         /// Set the weapon priority for the soldier to choose the most ideal weapon, with lower values meaning higher priority.
@@ -314,8 +316,6 @@ namespace Project
             WeaponPriority[0] = machineGun;
             WeaponPriority[1] = shotgun;
             WeaponPriority[2] = sniper;
-            WeaponPriority[3] = rocketLauncher;
-            WeaponPriority[4] = pistol;
         }
         
         public void SetTarget(TargetData targetData)
@@ -439,6 +439,7 @@ namespace Project
                 if (i == team.Length-1)
                 {
                     team[i].Role = SoliderRole.Queen;
+                    
                 }
                 else
                 {
@@ -462,7 +463,7 @@ namespace Project
             SpawnPoint spawn = open.Length > 0 ? open[Random.Range(0, open.Length)] : points[Random.Range(0, points.Length)];
 
             // Since there is a character controller attached, it needs to be disabled to move the soldier to the spawn.
-            CharacterController.enabled = false;
+            //CharacterController.enabled = false;
 
             // Move to the spawn point.
             Transform spawnTr = spawn.transform;
@@ -474,7 +475,7 @@ namespace Project
             
             // Reenable the character controller.
             // ReSharper disable once Unity.InefficientPropertyAccess
-            CharacterController.enabled = true;
+            //CharacterController.enabled = true;
             
             // Set a dummy role to indicate the soldier is no longer dead.
             Role = SoliderRole.Pawn;
@@ -562,14 +563,21 @@ namespace Project
             Colliders = colliders.Distinct().ToArray();
 
             // Assign team colors.
-            foreach (MeshRenderer meshRenderer in colorVisuals)
-            {
-                meshRenderer.material = RedTeam ? SoldierManager.Red : SoldierManager.Blue;
-            }
+
+            Colour();
+            
             
 
             // Spawn in.
             Spawn();
+        }
+
+        public void Colour()
+        {
+            foreach (MeshRenderer meshRenderer in colorVisuals)
+            {
+                meshRenderer.material = RedTeam ? SoldierManager.Red : SoldierManager.Blue;
+            }
         }
 
         protected override void OnDestroy()
@@ -714,36 +722,30 @@ namespace Project
                     a.material = SoldierManager.Red;
                 }
             }
+
+            Debug.Log("TEAM SWITCHED");
         }
 
         public void Equalise()
         {
-            MeshRenderer[] mesh = this.colorVisuals;
+            MeshRenderer[] mesh = colorVisuals;
             if (SoldierManager.TeamRed.Count > SoldierManager.TeamBlue.Count)
             {
-                for(int i= SoldierManager.TeamRed.Count-1; i>= SoldierManager.TeamBlue.Count; i--)
+                for(int i= 0; i<= 15- SoldierManager.TeamBlue.Count; i++)
                 {
-                    SoldierManager.TeamBlue.Add(SoldierManager.TeamRed[i - 1]);
-                    SoldierManager.TeamRed.Remove(SoldierManager.TeamRed[i-1]);                    
-                    foreach (MeshRenderer a in mesh)
-                    {
-                        a.material = SoldierManager.Blue;
-                    }
+                    SoldierManager.TeamRed[i].SwitchTeam();
                 }
             }
 
             else if (SoldierManager.TeamRed.Count < SoldierManager.TeamBlue.Count)
             {
-                for (int i = SoldierManager.TeamBlue.Count - 1; i >= SoldierManager.TeamRed.Count; i--)
+                for (int i = 0; i <= 15-SoldierManager.TeamRed.Count; i++)
                 {
-                    SoldierManager.TeamRed.Add(SoldierManager.TeamBlue[i - 1]);
-                    SoldierManager.TeamBlue.Remove(SoldierManager.TeamBlue[i - 1]);
-                    foreach (MeshRenderer a in mesh)
-                    {
-                        a.material = SoldierManager.Red;
-                    }
+                    SoldierManager.TeamBlue[i].SwitchTeam();
                 }
             }
+
+            Debug.Log("EQUALISED");
         }
 
         public void Queen_Switch()
@@ -774,26 +776,16 @@ namespace Project
                     }
                 }
             }
+
+            Debug.Log("Queen SWITCHED!");
         }
 
-        NavMeshPath path;
+        
         NavMeshAgent navAgent;
         
-        public void NavMeshMove(Vector3 position, EasyAI.Navigation.Steering.Behaviour behaviour = EasyAI.Navigation.Steering.Behaviour.Seek)
-        {
-            
-            
-            path = new NavMeshPath();
-            navAgent = GetComponent<NavMeshAgent>();
-
-            Debug.Log(navAgent.CalculatePath(position, path));
-            for (int i = 0; i < path.corners.Length - 1; i++)
-            {
-                //navAgent.Move(path.corners[i]);
-                Move(path.corners[i]);
-                //navAgent.CalculatePath(path.corners[i], path);
-
-            }
+        public void NavMeshMove(Vector3 position, NavMeshAgent navAgent)
+        {            
+            navAgent.SetDestination(position);
         }
        
     }
