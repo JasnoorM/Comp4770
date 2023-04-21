@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6347862280369580931}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Shoot Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7700828181764947109}
   - component: {fileID: 2648827422080590786}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3437481027177602144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4324690101913368735}
   - component: {fileID: 4324690101913368734}
   - component: {fileID: 4324690101913368729}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324690102149299456}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324690102426246913}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flag Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 4324690102430547646}
   - component: {fileID: 4324690102430547641}
   - component: {fileID: 4324690102430547640}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 4324690103502335280}
   - component: {fileID: 4324690103502335283}
   - component: {fileID: 4324690103502335282}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 4324690103535426268}
   - component: {fileID: 4324690103535426271}
   - component: {fileID: 4324690103535426270}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324690103884334129}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,6 +763,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4324690102149299456}
     m_Modifications:
+    - target: {fileID: 8400776709992796292, guid: 656abd63543ced946b18b5789dbef6fb, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670806116265439258, guid: 656abd63543ced946b18b5789dbef6fb, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8670806116832349763, guid: 656abd63543ced946b18b5789dbef6fb, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -811,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 8670806116832349822, guid: 656abd63543ced946b18b5789dbef6fb, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 656abd63543ced946b18b5789dbef6fb, type: 3}
 --- !u!4 &5891959130301870033 stripped
@@ -825,6 +837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4324690102149299456}
     m_Modifications:
+    - target: {fileID: 3628228453506767326, guid: 2918ac491bbfc5641a766a32cb92e416, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4511313112447805289, guid: 2918ac491bbfc5641a766a32cb92e416, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -873,6 +889,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket Launcher
       objectReference: {fileID: 0}
+    - target: {fileID: 4511313112447805295, guid: 2918ac491bbfc5641a766a32cb92e416, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511313112850746183, guid: 2918ac491bbfc5641a766a32cb92e416, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2918ac491bbfc5641a766a32cb92e416, type: 3}
 --- !u!4 &1437662078990486275 stripped
@@ -887,9 +911,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4324690102149299456}
     m_Modifications:
+    - target: {fileID: 2676458292163292245, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3019058213430793794, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019058213430793794, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3019058213430793807, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
       propertyPath: m_RootOrder
@@ -934,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 3019058213430793807, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019058214771293813, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 952b0bb7c6eb6e54b878f708ea2efee5, type: 3}
@@ -997,6 +1033,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 7130578204843744123, guid: a9cdc064c14c0514db14c0052c9d76c9, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130578206484645866, guid: a9cdc064c14c0514db14c0052c9d76c9, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941410509979978179, guid: a9cdc064c14c0514db14c0052c9d76c9, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cdc064c14c0514db14c0052c9d76c9, type: 3}
 --- !u!4 &3991838094818591642 stripped
@@ -1011,6 +1059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4324690102149299456}
     m_Modifications:
+    - target: {fileID: 487012298830572167, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 487012299910724954, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1058,6 +1110,14 @@ PrefabInstance:
     - target: {fileID: 487012299910724959, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}
       propertyPath: m_Name
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 487012299910724959, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 721524589687874819, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e946fc3ad9a75c4eb24c0cc1e442151, type: 3}

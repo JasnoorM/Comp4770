@@ -38,17 +38,17 @@ namespace Project.States
 
             //SolAgent.SetState<PursueState>();
             SolAgent = (Soldier)agent;
-            
-            
 
-            if (SolAgent.isQueen)
+
+
+           /* if (SolAgent.isQueen)
             {
              //   SolAgent.SetState<PursueState>();
             }
             else
             {
                // SolAgent.SetState<PickupState>();
-            }
+            }*/
 
 
 
@@ -59,6 +59,8 @@ namespace Project.States
 
             //SolAgent.Navigate(position);
 
+            //SolAgent.Navigate(position);
+            //navAgent.SetDestination(position);
 
 
         }
