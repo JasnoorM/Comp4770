@@ -47,9 +47,9 @@ namespace Project.States
 
 
                         
-                        //if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 2f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
+                        if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 2f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
                         
-                        /*{
+                        {
                             
                             target.Enemy.SwitchTeam();
                             target.Enemy.AtkPoints -= 50;
@@ -61,7 +61,7 @@ namespace Project.States
                             SolAgent.SwitchTeam();
                             target.Enemy.AtkPoints += 50;
                             SolAgent.AtkPoints -= 50;
-                        }*/
+                        }
                     }
                 }
                 
