@@ -20,13 +20,13 @@ namespace Project.States
             SolAgent = (Soldier)agent;
             NavMeshAgent meshAgent = SolAgent.GetComponent<NavMeshAgent>();
 
-            Vector3 position = new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20));
+            Vector3 position = new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), Random.Range(-20, 20)); //roam towards random points
 
             SolAgent.NavMeshMove(position, meshAgent);
 
-            if(SolAgent.DetectedEnemies != null)
+            if(SolAgent.DetectedEnemies != null) //found enemy then
             {
-                SolAgent.SetState<PursueState>();
+                SolAgent.SetState<PursueState>(); //switch to pursue
             }
 
 

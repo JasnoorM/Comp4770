@@ -41,13 +41,13 @@ namespace Project.States
 
 
             }
-            else SolAgent.SetState<PickupState2>();
+            else SolAgent.SetState<PickupState2>(); //mistery pickup
 
             
 
             if(pickedup)
             {
-                SolAgent.SetState<PursueState>();
+                SolAgent.SetState<PursueState>(); //pursue state
             }
 
            

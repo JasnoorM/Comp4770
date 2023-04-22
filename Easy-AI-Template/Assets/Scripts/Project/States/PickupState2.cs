@@ -28,12 +28,12 @@ namespace Project.States
         {
             base.Execute(agent);
 
-            if (mysterypickup != null)
+            if (mysterypickup != null) //pickup mistery pickup:
             {
                 Vector3 position = mysterypickup.transform.position;
                 SolAgent.NavMeshMove(position, NavAgent);
                 pickedup = true;
-                SolAgent.SetState<PursueState>();
+                SolAgent.SetState<PursueState>(); //switch to pursue
             }
             
 

@@ -34,7 +34,7 @@ namespace Project.States
                         SolAgent.NavMeshMove(-target.Position, navAgent);
 
                     }
-                    else if (SolAgent.DetectedEnemies == null)
+                    else if (SolAgent.DetectedEnemies == null) //no enemies detected
                     {
                         
                         SolAgent.SetState<PickupState>();
@@ -47,18 +47,18 @@ namespace Project.States
 
 
                         
-                        if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 2f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
+                        if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 2f && (SolAgent.AtkPoints > target.Enemy.AtkPoints)) //check to see if touching enemy
                         
                         {
                             
-                            target.Enemy.SwitchTeam();
+                            target.Enemy.SwitchTeam(); //switch team
                             target.Enemy.AtkPoints -= 50;
                             SolAgent.AtkPoints += 50;
                         }
                         else
                         {
 
-                            SolAgent.SwitchTeam();
+                            SolAgent.SwitchTeam(); //switch team
                             target.Enemy.AtkPoints += 50;
                             SolAgent.AtkPoints -= 50;
                         }
@@ -68,9 +68,9 @@ namespace Project.States
             }
             
 
-            private void OnTriggerEnter(Collider collider)
+            private void OnTriggerEnter(Collider collider) //collider
             {
-                Debug.Log("Hello");
+                
                 target.Enemy.SwitchTeam();
                 target.Enemy.AtkPoints -= 50;
                 SolAgent.AtkPoints += 50;
