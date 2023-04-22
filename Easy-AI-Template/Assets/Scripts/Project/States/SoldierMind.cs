@@ -17,21 +17,22 @@ namespace Project.States
 
             
             SolAgent = (Soldier)agent;
-            
-            
 
-            
-            SolAgent.SetState<RoamingState>();
-            
-            /*if (SolAgent.AtkPoints < 0.1 * 1500)
+
+
+
+            if (SolAgent.DetectedEnemies == null) SolAgent.SetState<RoamingState>();
+            else SolAgent.SetState<PursueState>();
+
+            if (SolAgent.AtkPoints < 0.1 * 1500)
             {
 
                 SolAgent.SetState<PickupState>();
             }
-            if(SolAgent.isLosing)
+            if (SolAgent.isLosing)
             {
                 SolAgent.SetState<PickupState2>();
-            }*/
+            }
 
         }
     }
