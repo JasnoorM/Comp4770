@@ -12,21 +12,21 @@ namespace Project.States
     {
         Soldier SolAgent;
         NavMeshAgent navAgent;
+        Soldier.EnemyMemory target;
         public override void Enter(Agent agent)
         {
             
             SolAgent = (Soldier)agent;
+            NavMeshAgent navAgent = SolAgent.GetComponent<NavMeshAgent>();
         }
         public override void Execute(Agent agent)
         {
+                target = SolAgent.DetectedEnemies.OrderBy(e => e.Distance).FirstOrDefault();
+                NavMeshAgent navAgent = SolAgent.GetComponent<NavMeshAgent>();
+                Collider collider = SolAgent.GetComponent<Collider>();
+                
 
-            NavMeshAgent navAgent = SolAgent.GetComponent<NavMeshAgent>();
-
-            if (SolAgent != null)
-            {
-                Soldier.EnemyMemory target = SolAgent.DetectedEnemies.OrderBy(e => e.Distance).FirstOrDefault();
-
-                if (target != null)
+            if (target != null)
                 {
                     if (target.Enemy.isQueen || target.Enemy.AtkPoints > SolAgent.AtkPoints)
                     {
@@ -47,8 +47,9 @@ namespace Project.States
 
 
                         
-                        if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 20f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
-                        {
+                        //if (Vector3.Distance(SolAgent.headPosition.position, target.Position) < 2f && (SolAgent.AtkPoints > target.Enemy.AtkPoints))
+                        
+                        /*{
                             
                             target.Enemy.SwitchTeam();
                             target.Enemy.AtkPoints -= 50;
@@ -60,15 +61,23 @@ namespace Project.States
                             SolAgent.SwitchTeam();
                             target.Enemy.AtkPoints += 50;
                             SolAgent.AtkPoints -= 50;
-                        }
+                        }*/
                     }
                 }
                 
             }
             
 
-            
-        }
+            private void OnTriggerEnter(Collider collider)
+            {
+                Debug.Log("Hello");
+                target.Enemy.SwitchTeam();
+                target.Enemy.AtkPoints -= 50;
+                SolAgent.AtkPoints += 50;
+            }
+        
 
     }
+
+    
 }
